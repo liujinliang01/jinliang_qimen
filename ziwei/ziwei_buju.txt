@@ -1,0 +1,1405 @@
+﻿
+
+function ding_shenming_gong(c){
+	var yinli = c.lunar()
+	var yue = yinli.lunarMonth
+	if (yue  < 0) {yue = Math.abs(yue) + 1}
+	var shi = cylce(c.hGz(),12)
+	var a = new Array(2) 
+	a[0] = cycle(cycle(3 + yue,12) - shi,12) //minggong
+	a[1] = cycle(cycle(3 + yue,12) + shi,12) //shengong
+	return a
+}
+
+function bu_shier_gong(c,gong,shen){
+	var shenming = ding_shenming_gong(c)
+	var ming = shenming[0]
+	shen = shenming[1]
+	for(var i = 1; i<13; i++){
+		gong[cycle(ming-i+1,12)] = shiergong[i] 
+	}
+}
+
+function get_wuxingju(c,shenming){	
+	var m = shenming[0]
+	var ju = new Array(2)
+	var c_zhengyue = new CCC(c.year(),2,15)
+	var zhengyue_ganzhi = c_zhengyue.mGz()
+	var minggong_huajia = huajia[cycle(zhengyue_ganzhi + cycle(m-2,12),60)]
+	var minggong_nayin = nayin_list[minggong_huajia]
+	mingong_nayin = mingong_nayin.substring(2)
+	switch(minggong_nayin){
+
+		case "水":
+			ju[0] = "水二局"
+			ju[1] = "2"
+			break
+		case "木":
+			ju[0] = "木三局"
+			ju[1] = "3"
+			break
+		case "金":
+			ju[0] = "金四局"
+			ju[1] = "4"
+			break
+ 		case "土":
+			ju[0] = "土五局"
+			ju[1] = "5"
+			break
+		case "火":
+			ju[0] = "火六局"
+			ju[1] = "1"
+			break
+		return ju
+	}
+}
+
+
+function ding_ziwei_loc(c,ju){//定紫微起点
+	var x,y
+	var shengri = c.lunar().lunarDate
+	var r = shengri % ju
+	if(r == ju){
+		y = shengri/ju
+	} else{
+		x = ju - r
+		if(x%2 == 0) {
+			y = ((shengri + x)/ju) + x
+			y = cycle(y,12)
+		} else {
+			y = ((shengri + x)/ju) - x
+			y = cycle(y,12)			
+		}
+	}
+}
+
+function bu_ziwei_tianfu(ziwei,tianfu,ziwei_loc,tianfu_loc){//布紫微、天府
+
+	for(var i=1; i<13; i++){
+		ziwei[cycle(ziwei_loc-i+1,12)] = ziwei_xi[i]
+		tianfu[cycle(tianfu_loc+i-1,12)] = tianfu_xi[i] 
+	}
+
+	for(var i=1; i<13; i++){
+		ziwei_tianfu_xi_miaowang(ziwei_loc)
+	}
+
+}
+
+function ziwei_tianfu_xi_miaowang(ziwei_loc){ //紫微、天府系庙旺
+	switch(cycle(ziwei_loc-i+1,12)) { 
+		case 1: 
+			ziwei[1] = "紫微和"
+			ziwei[12] = "天机和"
+			ziwei[10] = "太阳和"
+			ziwei[9] = "武曲得"
+			ziwei[8] = "天同不"
+			ziwei[5] = "廉贞利"
+
+			tianfu[5] = "天府庙"
+			tianfu[6] = "太阴陷"
+			tianfu[7] = "贪狼旺"
+			tianfu[8] = "巨门不"
+			tianfu[9] = "天相庙"
+			tianfu[10] = "天梁得"
+			tianfu[11] = "七杀庙"
+			tianfu[3] = "破军得"
+			break
+		case 2: 
+			ziwei[2] = "紫微庙"
+			ziwei[1] = "天机庙"
+			ziwei[11] = "太阳不"
+			ziwei[10] = "武曲利"
+			ziwei[9] = "天同旺"
+			ziwei[6] = "廉贞陷"
+
+			tianfu[4] = "天府得"
+			tianfu[5] = "太阴陷"
+			tianfu[6] = "贪狼陷"
+			tianfu[7] = "巨门旺"
+			tianfu[8] = "天相得"
+			tianfu[9] = "天梁陷"
+			tianfu[10] = "七杀旺"
+			tianfu[2] = "破军旺"
+			break
+		case 3: 
+			ziwei[3] = "紫微旺"
+			ziwei[2] = "天机陷"
+			ziwei[12] = "太阳陷"
+			ziwei[11] = "武曲庙"
+			ziwei[10] = "天同和"
+			ziwei[7] = "廉贞和"
+
+			tianfu[3] = "天府庙"
+			tianfu[4] = "太阴陷"
+			tianfu[5] = "贪狼庙"
+			tianfu[6] = "巨门旺"
+			tianfu[7] = "天相庙"
+			tianfu[8] = "天梁庙"
+			tianfu[9] = "七杀庙"
+			tianfu[1] = "破军庙"
+			break
+		case 4: 
+			ziwei[4] = "紫微旺"
+			ziwei[3] = "天机得"
+			ziwei[1] = "太阳陷"
+			ziwei[12] = "武曲和"
+			ziwei[11] = "天同和"
+			ziwei[8] = "廉贞利"
+
+			tianfu[2] = "天府庙"
+			tianfu[3] = "太阴旺"
+			tianfu[4] = "贪狼利"
+			tianfu[5] = "巨门陷"
+			tianfu[6] = "天相得"
+			tianfu[7] = "天梁庙"
+			tianfu[8] = "七杀庙"
+			tianfu[12] = "破军和"
+			break
+		case 5: 
+			ziwei[5] = "紫微利"
+			ziwei[4] = "天机旺"
+			ziwei[2] = "太阳不"
+			ziwei[1] = "武曲旺"
+			ziwei[12] = "天同庙"
+			ziwei[9] = "廉贞庙"
+
+
+			tianfu[1] = "天府庙"
+			tianfu[2] = "太阴庙"
+			tianfu[3] = "贪狼旺"
+			tianfu[4] = "巨门庙"
+			tianfu[5] = "天相得"
+			tianfu[6] = "天梁陷"
+			tianfu[7] = "七杀庙"
+			tianfu[11] = "破军旺"
+			break
+		case 6: 
+			ziwei[6] = "紫微旺"
+			ziwei[5] = "天机利"
+			ziwei[3] = "太阳旺"
+			ziwei[2] = "武曲庙"
+			ziwei[1] = "天同旺"
+			ziwei[10] = "廉贞和"
+
+			tianfu[12] = "天府得"
+			tianfu[1] = "太阴庙"
+			tianfu[2] = "贪狼庙"
+			tianfu[3] = "巨门庙"
+			tianfu[4] = "天相陷"
+			tianfu[5] = "天梁庙"
+			tianfu[6] = "七杀和"
+			tianfu[10] = "破军陷"
+			break
+		case 7: 
+			ziwei[7] = "紫微庙"
+			ziwei[6] = "天机和"
+			ziwei[4] = "太阳庙"
+			ziwei[3] = "武曲得"
+			ziwei[2] = "天同不"
+			ziwei[11] = "廉贞利"
+
+
+			tianfu[11] = "天府庙"
+			tianfu[12] = "太阴庙"
+			tianfu[1] = "贪狼旺"
+			tianfu[2] = "巨门不"
+			tianfu[3] = "天相庙"
+			tianfu[4] = "天梁庙"
+			tianfu[5] = "七杀庙"
+			tianfu[9] = "破军得"
+			break
+		case 8: 
+			ziwei[8] = "紫微不"
+			ziwei[7] = "天机庙"
+			ziwei[5] = "太阳旺"
+			ziwei[4] = "武曲利"
+			ziwei[3] = "天同利"
+			ziwei[12] = "廉贞陷"
+
+
+			tianfu[10] = "天府和"
+			tianfu[11] = "太阴旺"
+			tianfu[12] = "贪狼陷"
+			tianfu[1] = "巨门旺"
+			tianfu[2] = "天相得"
+			tianfu[3] = "天梁庙"
+			tianfu[4] = "七杀旺"
+			tianfu[8] = "破军旺"
+			break
+		case 9: 
+			ziwei[9] = "紫微旺"
+			ziwei[8] = "天机陷"
+			ziwei[6] = "太阳旺"
+			ziwei[5] = "武曲庙"
+			ziwei[4] = "天同和"
+			ziwei[1] = "廉贞和"
+
+			tianfu[9] = "天府得"
+			tianfu[10] = "太阴旺"
+			tianfu[11] = "贪狼庙"
+			tianfu[12] = "巨门旺"
+			tianfu[1] = "天相庙"
+			tianfu[2] = "天梁旺"
+			tianfu[3] = "七杀庙"
+			tianfu[7] = "破军庙"
+			break
+		case 10: 
+			ziwei[10] = "紫微旺"
+			ziwei[9] = "天机得"
+			ziwei[7] = "太阳旺"
+			ziwei[6] = "武曲和"
+			ziwei[5] = "天同和"
+			ziwei[2] = "廉贞利"
+
+			tianfu[8] = "天府庙"
+			tianfu[9] = "太阴利"
+			tianfu[10] = "贪狼利"
+			tianfu[11] = "巨门陷"
+			tianfu[12] = "天相得"
+			tianfu[1] = "天梁庙"
+			tianfu[2] = "七杀庙"
+			tianfu[6] = "破军和"
+			break
+		case 11: 
+			ziwei[11] = "紫微得"
+			ziwei[10] = "天机和"
+			ziwei[8] = "太阳不"
+			ziwei[7] = "武曲旺"
+			ziwei[6] = "天同庙"
+			ziwei[3] = "廉贞庙"
+
+
+			tianfu[7] = "天府旺"
+			tianfu[8] = "太阴不"
+			tianfu[9] = "贪狼和"
+			tianfu[10] = "巨门得"
+			tianfu[11] = "天相得"
+			tianfu[12] = "天梁陷"
+			tianfu[1] = "七杀旺"
+			tianfu[5] = "破军旺"
+			break
+		case 12: 
+			ziwei[12] = "紫微旺"
+			ziwei[11] = "天机利"
+			ziwei[9] = "太阳得"
+			ziwei[8] = "武曲庙"
+			ziwei[7] = "天同陷"
+			ziwei[4] = "廉贞闲"
+
+			tianfu[6] = "天府得"
+			tianfu[7] = "太阴不"
+			tianfu[8] = "贪狼庙"
+			tianfu[9] = "巨门庙"
+			tianfu[10] = "天相陷"
+			tianfu[11] = "天梁庙"
+			tianfu[12] = "七杀和"
+			tianfu[4] = "破军旺"
+			break
+	}
+}
+
+function ding_tianfu_loc(ziwei_loc){//定天府起点
+	return cycle(5 - ziwei_loc + 1,12)
+
+}
+
+function bu_tianfu(tianfu,tianfu_loc){//布天府	
+	for(var i=1; i<13; i++){
+		tianfu[cycle(tianfu_loc+i-1,12)] = tianfu_xi[i] 
+	}
+}
+
+function bu_tuo_lu_yang(tuo_lu_yang, jielu,kuiyue, tianguan, tianfu2,niangan){
+//年干系：陀禄羊、劫路、魁钺、天官、天福
+	switch(niangan){
+		case "甲":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+1,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[9] = "劫路"
+
+			kuiyue[2] = "天魁旺"
+			kuiyue[8] = "天钺旺"
+
+			tianguan[8] = "天官"
+			tianfu2[10] = "天福"
+
+			break
+		case "乙":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+2,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[10] = "劫路"
+
+
+			kuiyue[1] = "天魁旺"
+			kuiyue[9] = "天钺庙"
+
+			tianguan[5] = "天官"
+			tianfu2[9] = "天福"
+			break
+		case "丙":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+4,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[7] = "劫路"
+
+
+			kuiyue[12] = "天魁旺"
+			kuiyue[10] = "天钺庙"
+
+			tianguan[6] = "天官"
+			tianfu2[1] = "天福"
+			break
+		case "丁":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+5,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[8] = "劫路"
+
+
+			kuiyue[12] = "天魁旺"
+			kuiyue[10] = "天钺庙"
+
+			tianguan[3] = "天官"
+			tianfu2[12] = "天福"
+			break
+		case "戊":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+4,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[5] = "劫路"
+
+
+			kuiyue[2] = "天魁旺"
+			kuiyue[8] = "天钺旺"
+
+			tianguan[4] = "天官"
+			tianfu2[4] = "天福"
+			break
+		case "己":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+5,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[6] = "劫路"
+
+
+			kuiyue[1] = "天魁旺"
+			kuiyue[9] = "天钺庙"
+
+			tianguan[10] = "天官"
+			tianfu2[3] = "天福"
+			break
+		case "庚":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+7,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[3] = "劫路"
+
+
+			kuiyue[3] = "天魁"
+			kuiyue[7] = "天钺"
+
+			tianguan[12] = "天官"
+			tianfu2[7] = "天福"
+			break
+		case "辛":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+8,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[4] = "劫路"
+
+
+			kuiyue[3] = "天魁"
+			kuiyue[7] = "天钺"
+
+			tianguan[10] = "天官"
+			tianfu2[6] = "天福"
+			break
+		case "壬":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+10,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[1] = "劫路"
+
+
+			kuiyue[4] = "天魁庙"
+			kuiyue[6] = "天钺旺"
+
+			tianguan[11] = "天官"
+			tianfu2[7] = "天福"
+			break
+		case "癸":
+			for(var i=1; i<13; i++) {
+				tuo_lu_yang[cycle(i+11,12)] = tuo_lu_yang_xi[i]
+			}
+			jielu[2] = "劫路"
+
+
+			kuiyue[4] = "天魁庙"
+			kuiyue[6] = "天钺旺"
+
+			tianguan[7] = "天官"
+			tianfu2[6] = "天福"
+			break
+	}
+}
+
+
+function bu_boshi(boshi,tuo_lu_yang,shunni){ //博士，tuo_lu_yang 陀禄羊
+	var lucun = locate("禄存",tuo_lu_yang)
+	if(shunni=="shun"){
+		for(var i=1; i<13; i++){
+			boshi[cycle(lucun+i-1,12)] = boshi_xi[i]
+		}
+	} else{
+		for(var i=1; i<13; i++){
+			boshi[cycle(lucun-i+1,12)] = boshi_xi[i]
+		}
+	}
+}
+
+function bu_shixi_zhuxing(qktf,jiechang,huoling,shizhu){//布时系诸星
+//qktf --- qukongtaifeng 文曲、地空、台辅、封告
+//jiechang ---dijie wenchang 地劫、文昌
+//huoling --- 火星、铃星
+	var shizhi = cycle(shizhu,12)
+	for(var i=1; i<13; i++){
+		qktf[i] = ""
+	}
+	switch(shizhi){
+		case "子": 
+			qktf[5] = "文曲庙"
+			qktf[12] = "地空"
+			qktf[7] = "台辅"
+			qktf[3] = "封告"
+			jiechang[11] = "文昌陷"			
+			jiechang[12] = "地劫"
+			huoling[3] = "火星"			
+			huoling[11] = "铃星"		
+			break
+		case "丑": 
+			qktf[6] = "文曲庙"
+			qktf[11] = "地空"
+			qktf[8] = "台辅"
+			qktf[4] = "封告"
+			jiechang[10] = "文昌庙"			
+			jiechang[1] = "地劫"
+			huoling[5] = "火星"			
+			huoling[12] = "铃星"	
+			break
+		case "寅": 
+			qktf[7] = "文曲陷"
+			qktf[10] = "地空"
+			qktf[9] = "台辅"
+			qktf[5] = "封告"
+			jiechang[9] = "文昌旺"			
+			jiechang[2] = "地劫"
+			huoling[4] = "火星"			
+			huoling[6] = "铃星"
+			break
+		case "卯": 
+			qktf[8] = "文曲旺"
+			qktf[9] = "地空"
+			qktf[10] = "台辅"
+			qktf[6] = "封告"
+			jiechang[8] = "文昌平"			
+			jiechang[3] = "地劫"
+			huoling[1] = "火星平"			
+			huoling[2] = "铃星"
+			break
+		case "辰": 
+			qktf[9] = "文曲平"
+			qktf[8] = "地空"
+			qktf[11] = "台辅"
+			qktf[7] = "封告"
+			jiechang[7] = "文昌庙"			
+			jiechang[4] = "地劫"
+			huoling[7] = "火星"			
+			huoling[3] = "铃星"
+			break
+		case "巳": 
+			qktf[10] = "文曲庙"
+			qktf[7] = "地空"
+			qktf[12] = "台辅"
+			qktf[8] = "封告"
+			jiechang[6] = "文昌陷"			
+			jiechang[5] = "地劫"
+			huoling[9] = "火星"			
+			huoling[4] = "铃星"
+			break
+		case "午": 
+			qktf[11] = "文曲陷"
+			qktf[6] = "地空"
+			qktf[1] = "台辅"
+			qktf[9] = "封告"
+			jiechang[5] = "文昌旺"			
+			jiechang[6] = "地劫"
+			huoling[8] = "火星"			
+			huoling[10] = "铃星"
+			break
+		case "未": 
+			qktf[12] = "文曲旺"
+			qktf[5] = "地空"
+			qktf[2] = "台辅"
+			qktf[10] = "封告"
+			jiechang[4] = "文昌平"			
+			jiechang[7] = "地劫"
+			huoling[5] = "火星"			
+			huoling[6] = "铃星"
+			break
+		case "申": 
+			qktf[1] = "文曲庙"
+			qktf[4] = "地空"
+			qktf[3] = "台辅"
+			qktf[11] = "封告"
+			qktf[5] = "地空"
+			qktf[2] = "台辅"
+			qktf[10] = "封告"
+			jiechang[3] = "文昌陷"			
+			jiechang[8] = "地劫"
+			huoling[11] = "火星"			
+			huoling[7] = "铃星"
+			break
+		case "酉": 
+			qktf[2] = "文曲庙"
+			qktf[3] = "地空"
+			qktf[4] = "台辅"
+			qktf[12] = "封告"
+			qktf[5] = "地空"
+			qktf[2] = "台辅"
+			qktf[10] = "封告"
+			jiechang[2] = "文昌庙"			
+			jiechang[9] = "地劫"
+			huoling[1] = "火星"			
+			huoling[8] = "铃星"
+			break
+		case "戌": 
+			qktf[3] = "文曲平"
+			qktf[2] = "地空"
+			qktf[5] = "台辅"
+			qktf[1] = "封告"
+			jiechang[1] = "文昌旺"			
+			jiechang[10] = "地劫"
+			huoling[12] = "火星"			
+			huoling[2] = "铃星"
+			break
+		case "亥": 
+			qktf[4] = "文曲旺"
+			qktf[1] = "地空"
+			qktf[6] = "台辅"
+			qktf[2] = "封告"
+			jiechang[12] = "文昌旺"			
+			jiechang[11] = "地劫"
+			huoling[9] = "火星"			
+			huoling[10] = "铃星"
+			break
+	}
+}
+
+function bu_huoling(nianzhu,shizhu) {
+	var n = cycle(nianzhu,12) //年支序数 
+	var s = cycle(shizhu,12) //时支序数
+	switch(n){
+		case 1:
+		case 5:
+		case 9:
+			huoling[cycle(s+2,12)] = "火星"
+			huoling[cycle(s+10,12)] = "铃星"
+			break
+
+		case 2:
+		case 6:
+		case 10:
+			huoling[cycle(s+3,12)] = "火星"
+			huoling[cycle(s+10,12)] = "铃星"
+			break
+
+		case 3:
+		case 7:
+		case 11:
+			huoling[cycle(s+1,12)] = "火星"
+			huoling[cycle(s+3,12)] = "铃星"
+			break
+
+		case 4:
+		case 8:
+		case 12:
+			huoling[cycle(s+9,12)] = "火星"
+			huoling[cycle(s+10,12)] = "铃星"
+			break
+	}
+	huoling_miaowang(huoling)
+}
+
+function huoling_miaowang(huoling) { //huoling is an array
+	switch(huoling.indexOf("火星")) {
+		case 1:
+			huoling[1] = "火星平"
+			break
+		case 2:
+			huoling[2] = "火星旺"
+			break
+		case 3:
+			huoling[3] = "火星庙"
+			break
+		case 4:
+			huoling[4] = "火星平"
+			break
+		case 5:
+			huoling[5] = "火星闲"
+			break
+		case 6:
+			huoling[6] = "火星旺"
+			break
+		case 7:
+			huoling[7] = "火星庙"
+			break
+		case 8:
+			huoling[8] = "火星闲"
+			break
+		case 9:
+			huoling[9] = "火星陷"
+			break
+		case 10:
+			huoling[10] = "火星陷"
+			break
+		case 11:
+			huoling[11] = "火星庙"
+			break
+		case 12:
+			huoling[12] = "火星平"
+			break
+	}
+	switch(huoling.indexOf("铃星")) {
+		case 1:
+			huoling[1] = "铃星陷"
+			break
+		case 2:
+			huoling[2] = "铃星陷"
+			break
+		case 3:
+			huoling[3] = "铃星庙"
+			break
+		case 4:
+			huoling[4] = "铃星庙"
+			break
+		case 5:
+			huoling[5] = "铃星旺"
+			break
+		case 6:
+			huoling[6] = "铃星旺"
+			break
+		case 7:
+			huoling[7] = "铃星庙"
+			break
+		case 8:
+			huoling[8] = "铃星旺"
+			break
+		case 9:
+			huoling[9] = "铃星旺"
+			break
+		case 10:
+			huoling[10] = "铃星陷"
+			break
+		case 11:
+			huoling[11] = "铃星庙"
+			break
+		case 12:
+			huoling[12] = "铃星庙"
+			break
+	}
+}
+
+function bu_yuexi(fujie,bixingyao,tianma,tianwu,yueyin,yue){//月系诸星：辅解、弼刑姚、天马、天巫、月阴
+	for(var i=1;i<13;i++){
+		fujie[i] = ""
+		bixingyao[i] = ""
+		tianma[i] = ""
+		tianwu[i] = ""
+		yueyin[i] = ""
+	}
+	switch(yue){
+		case "一":
+			fujie[5] = "左辅庙"
+			fujie[9] = "天解"
+			bixingyao[11] = "右弼庙"
+			bixingyao[10] = "天刑庙"
+			bixingyao[2] = "天姚平"
+			tianma[9] = "天马"
+			tianwu[6] = "天巫"
+			yueyin[11] = "天月"
+			yueyin[3] = "阴煞"
+			break			
+		case "二":
+			fujie[6] = "左辅平"
+			fujie[9] = "天解"
+			bixingyao[10] = "右弼陷"
+			bixingyao[11] = "天刑庙"
+			bixingyao[3] = "天姚旺"
+			tianma[6] = "天马"
+			tianwu[9] = "天巫"
+			yueyin[6] = "天月"
+			yueyin[1] = "阴煞"
+			break		
+		case "三":
+			fujie[7] = "左辅旺"
+			fujie[11] = "天解"
+			bixingyao[9] = "右弼闲"
+			bixingyao[12] = "天刑陷"
+			bixingyao[4] = "天姚庙"
+			tianma[3] = "天马"
+			tianwu[3] = "天巫"
+			yueyin[5] = "天月"
+			yueyin[11] = "阴煞"
+			break		
+		case "四":
+			fujie[8] = "左辅庙"
+			fujie[11] = "天解"
+			bixingyao[8] = "右弼庙"
+			bixingyao[1] = "天刑平"
+			bixingyao[5] = "天姚陷"
+			tianma[12] = "天马"
+			tianwu[12] = "天巫"
+			yueyin[3] = "天月"
+			yueyin[9] = "阴煞"
+			break		
+		case "五":
+			fujie[9] = "左辅平"
+			fujie[1] = "天解"
+			bixingyao[7] = "右弼旺"
+			bixingyao[2] = "天刑陷"
+			bixingyao[6] = "天姚平"
+			tianma[9] = "天马"
+			tianwu[6] = "天巫"
+			yueyin[8] = "天月"
+			yueyin[7] = "阴煞"
+			break		
+		case "六":
+			fujie[10] = "左辅陷"
+			fujie[1] = "天解"
+			bixingyao[6] = "右弼平"
+			bixingyao[3] = "天刑庙"
+			bixingyao[7] = "天姚平"
+			tianma[6] = "天马平"
+			tianwu[9] = "天巫"
+			yueyin[4] = "天月"
+			yueyin[5] = "阴煞"
+			break		
+		case "七":
+			fujie[11] = "左辅庙"
+			fujie[3] = "天解"
+			bixingyao[5] = "右弼庙"
+			bixingyao[4] = "天刑庙"
+			bixingyao[8] = "天姚旺"
+			tianma[3] = "天马"
+			tianwu[3] = "天巫"
+			yueyin[12] = "天月"
+			yueyin[3] = "阴煞"
+			break		
+		case "八":
+			fujie[12] = "左辅闲"
+			fujie[3] = "天解"
+			bixingyao[4] = "右弼陷"
+			bixingyao[5] = "天刑平"
+			bixingyao[9] = "天姚陷"
+			tianma[12] = "天马"
+			tianwu[12] = "天巫"
+			yueyin[8] = "天月"
+			yueyin[1] = "阴煞"
+			break		
+		case "九":
+			fujie[1] = "左辅旺"
+			fujie[5] = "天解"
+			bixingyao[3] = "右弼旺"
+			bixingyao[6] = "天刑陷"
+			bixingyao[10] = "天姚庙"
+			tianma[9] = "天马"
+			tianwu[6] = "天巫"
+			yueyin[3] = "天月"
+			yueyin[11] = "阴煞"
+			break		
+		case "十":
+			fujie[2] = "左辅庙"
+			fujie[5] = "天解"
+			bixingyao[2] = "右弼庙"
+			bixingyao[7] = "天刑平"
+			bixingyao[11] = "天姚庙"
+			tianma[6] = "天马"
+			tianwu[9] = "天巫"
+			yueyin[7] = "天月"
+			yueyin[9] = "阴煞"
+			break		
+		case "十一":
+			fujie[3] = "左辅庙"
+			fujie[7] = "天解"
+			bixingyao[1] = "右弼庙"
+			bixingyao[8] = "天刑陷"
+			bixingyao[12] = "天姚陷"
+			tianma[3] = "天马"
+			tianwu[3] = "天巫"
+			yueyin[11] = "天月"
+			yueyin[7] = "阴煞"
+			break		
+		case "十二":
+			fujie[4] = "左辅陷"
+			fujie[7] = "天解"
+			bixingyao[12] = "右弼平"
+			bixingyao[9] = "天刑陷"
+			bixingyao[1] = "天姚陷"
+			tianma[12] = "天马"
+			tianwu[12] = "天巫"
+			yueyin[3] = "天月"
+			yueyin[5] = "阴煞"
+			break		
+	}
+}
+
+function bu_rixing(enguang,santai,bazuo,tiangui,ri,qktf,jiechang,fujie,bixingyao){//日系：恩光、三台、八座、天贵
+	var wenqu_loc = locate("文曲",qktf)
+	var wenchang_loc = locate("文昌",jiechang)
+	var zuofu_loc = locate("左辅",fujie)
+	var youbi_loc = locate("右弼",bixingyao)
+	for(var i=1;i<13;i++){
+		enguang[i] = ""
+		santai[i] = ""
+		bazuo[i] = ""
+		tiangui[i] = ""
+	}
+	enguang[cycle(wenchang_loc+ri-2,12)] = "恩光"
+	santai[cycle(zuofu_loc+ri-1,12)] = "三台"
+	bazuo[cycle(youbi_loc-ri+1,12)] = "八座"
+	tiangui[cycle(wenqu_loc+ri-2,12)] = "天贵"	
+
+}
+
+function bu_nianzhi_xi(kongkufeng,xulong,gugua,luanxifei,posui,suijian,jiangxing,nianzhi){//年系诸星：孤寡、鸾喜蜚、空哭凤、虚龙、破碎
+	for(var i=1;i<13;i++){
+		kongkufeng[i] = ""
+		xulong[i] = ""
+		gugua[i] = ""
+		luanxifei[i] = ""
+		posui[i] = ""
+	}
+
+	switch(nianzhi){
+		case "子":
+			kongkufeng[2] = "天空"
+			kongkufeng[7] = "天哭陷"
+			kongkufeng[11] = "凤阁"
+			xulong[7] = "天虚平"
+			xulong[5] = "龙池"
+			gugua[3] = "孤辰"
+			gugua[11] = "寡宿"
+			luanxifei[4] = "红鸾"
+			luanxifei[10] = "天喜"
+			luanxifei[9] = "蜚廉"
+			posui[6] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+1-1,12)] = suijian_xi[i]
+				jiangxing[i] = jiangxing_xi[i]
+			}
+			break
+		case "丑":
+			kongkufeng[3] = "天空"
+			kongkufeng[6] = "天哭"
+			kongkufeng[10] = "凤阁"
+			xulong[8] = "天虚陷"
+			xulong[6] = "龙池"
+			gugua[3] = "孤辰"
+			gugua[11] = "寡宿"
+			luanxifei[3] = "红鸾"
+			luanxifei[9] = "天喜"
+			luanxifei[10] = "蜚廉"
+			posui[2] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+2-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+10-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "寅":
+			kongkufeng[4] = "天空"
+			kongkufeng[5] = "天哭平"
+			kongkufeng[9] = "凤阁"
+			xulong[9] = "天虚庙"
+			xulong[7] = "龙池"
+			gugua[6] = "孤辰"
+			gugua[2] = "寡宿"
+			luanxifei[2] = "红鸾"
+			luanxifei[8] = "天喜"
+			luanxifei[11] = "蜚廉"
+			posui[10] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+3-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+7-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "卯":
+			kongkufeng[5] = "天空"
+			kongkufeng[4] = "天哭庙"
+			kongkufeng[8] = "凤阁"
+			xulong[10] = "天虚旺"
+			xulong[8] = "龙池"
+			gugua[6] = "孤辰"
+			gugua[2] = "寡宿"
+			luanxifei[1] = "红鸾"
+			luanxifei[7] = "天喜"
+			luanxifei[6] = "蜚廉"
+			posui[6] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+4-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+4-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "辰":
+			kongkufeng[6] = "天空"
+			kongkufeng[3] = "天哭平"
+			kongkufeng[7] = "凤阁"
+			xulong[11] = "天虚陷"
+			xulong[9] = "龙池"
+			gugua[6] = "孤辰"
+			gugua[2] = "寡宿"
+			luanxifei[12] = "红鸾"
+			luanxifei[6] = "天喜"
+			luanxifei[7] = "蜚廉"
+			posui[2] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+5-1,12)] = suijian_xi[i]
+				jiangxing[i] = jiangxing_xi[i]
+			}
+			break		
+		case "巳":
+			kongkufeng[7] = "天空"
+			kongkufeng[2] = "天哭庙"
+			kongkufeng[6] = "凤阁"
+			xulong[12] = "天虚平"
+			xulong[10] = "龙池"
+			gugua[9] = "孤辰"
+			gugua[5] = "寡宿"
+			luanxifei[11] = "红鸾"
+			luanxifei[5] = "天喜"
+			luanxifei[8] = "蜚廉"
+			posui[10] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+6-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+10-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "午":
+			kongkufeng[8] = "天空"
+			kongkufeng[1] = "天哭平"
+			kongkufeng[5] = "凤阁"
+			xulong[1] = "天虚陷"
+			xulong[11] = "龙池"
+			gugua[9] = "孤辰"
+			gugua[5] = "寡宿"
+			luanxifei[10] = "红鸾"
+			luanxifei[4] = "天喜"
+			luanxifei[3] = "蜚廉"
+			posui[6] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+7-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+7-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "未":
+			kongkufeng[9] = "天空"
+			kongkufeng[12] = "天哭平"
+			kongkufeng[4] = "凤阁"
+			xulong[2] = "天虚庙"
+			xulong[12] = "龙池"
+			gugua[9] = "孤辰"
+			gugua[5] = "寡宿"
+			luanxifei[9] = "红鸾"
+			luanxifei[3] = "天喜"
+			luanxifei[4] = "蜚廉"
+			posui[2] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+8-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+4-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "申":
+			kongkufeng[10] = "天空"
+			kongkufeng[11] = "天哭平"
+			kongkufeng[3] = "凤阁"
+			xulong[3] = "天虚旺"
+			xulong[1] = "龙池"
+			gugua[12] = "孤辰"
+			gugua[8] = "寡宿"
+			luanxifei[8] = "红鸾"
+			luanxifei[2] = "天喜"
+			luanxifei[5] = "蜚廉"
+			posui[10] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+9-1,12)] = suijian_xi[i]
+				jiangxing[i] = jiangxing_xi[i]
+			}
+			break		
+		case "酉":
+			kongkufeng[11] = "天空"
+			kongkufeng[10] = "天哭闲"
+			kongkufeng[2] = "凤阁"
+			xulong[4] = "天虚庙"
+			xulong[2] = "龙池"
+			gugua[12] = "孤辰"
+			gugua[8] = "寡宿"
+			luanxifei[7] = "红鸾"
+			luanxifei[1] = "天喜"
+			luanxifei[12] = "蜚廉"
+			posui[6] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+10-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+10-1,12)] = jiangxing_xi[i]
+			}
+			break		
+		case "戌":
+			kongkufeng[12] = "天空"
+			kongkufeng[9] = "天哭庙"
+			kongkufeng[1] = "凤阁"
+			xulong[5] = "天虚陷"
+			xulong[3] = "龙池"
+			gugua[12] = "孤辰"
+			gugua[8] = "寡宿"
+			luanxifei[6] = "红鸾"
+			luanxifei[12] = "天喜"
+			luanxifei[1] = "蜚廉"
+			posui[2] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+11-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+7-1,12)] = jiangxing_xi[i]
+			}
+			break
+		case "亥":
+			kongkufeng[1] = "天空"
+			kongkufeng[8] = "天哭平"
+			kongkufeng[12] = "凤阁"
+			xulong[6] = "天虚旺"
+			xulong[4] = "龙池"
+			gugua[3] = "孤辰"
+			gugua[11] = "寡宿"
+			luanxifei[5] = "红鸾"
+			luanxifei[11] = "天喜"
+			luanxifei[2] = "蜚廉"
+			posui[10] = "破碎"
+			for(var i=1;i<13;i++){
+				suijian[cycle(i+12-1,12)] = suijian_xi[i]
+				jiangxing[cycle(i+4-1,12)] = jiangxing_xi[i]
+			}
+			break				
+	}
+}
+
+function bu_shangshi_mingzhu(shangshi,shenming_gong){//天伤、天使
+	switch(shenming_gong[0]){
+		case 1:
+			shangshi[6] = "天伤"
+			shangshi[8] = "天使"
+			mingzhu = "贪狼"
+			break
+		case 2:
+			shangshi[7] = "天伤"
+			shangshi[9] = "天使"
+			mingzhu = "巨门"
+			break		
+		case 3:
+			shangshi[8] = "天伤"
+			shangshi[10] = "天使"
+			mingzhu = "禄存"
+			break		
+		case 4:
+			shangshi[9] = "天伤"
+			shangshi[11] = "天使"
+			mingzhu = "文曲"
+			break		
+		case 5:
+			shangshi[10] = "天伤"
+			shangshi[12] = "天使"
+			mingzhu = "廉贞"
+			break		
+		case 6:
+			shangshi[11] = "天伤"
+			shangshi[1] = "天使"
+			mingzhu = "武曲"
+			break		
+		case 7:
+			shangshi[12] = "天伤"
+			shangshi[2] = "天使"
+			mingzhu = "破军"
+			break		
+		case 8:
+			shangshi[1] = "天伤"
+			shangshi[3] = "天使"
+			mingzhu = "武曲"
+			break		
+		case 9:
+			shangshi[2] = "天伤"
+			shangshi[4] = "天使"
+			mingzhu = "廉贞"
+			break		
+		case 10:
+			shangshi[3] = "天伤"
+			shangshi[5] = "天使"
+			mingzhu = "文曲"
+			break		
+		case 11:
+			shangshi[4] = "天伤"
+			shangshi[6] = "天使"
+			mingzhu = "禄存"
+			break		
+		case 12:
+			shangshi[5] = "天伤"
+			shangshi[7] = "天使"
+			mingzhu = "巨门"
+			break			
+	}
+}
+
+function ding_shenzhu(shenzhu,shenming_gong){//天伤、天使
+	switch(shenming_gong[1]){
+		case 1:
+			shenzhu = "火星"
+			break
+		case 2:
+			shenzhu = "天相"
+			break	
+		case 3:
+			shenzhu = "天梁"
+			break	
+		case 4:
+			shenzhu = "天同"
+			break		
+		case 5:
+			shenzhu = "文昌"
+			break	
+		case 6:
+			shenzhu = "天机"
+			break	
+		case 7:
+			shenzhu = "火星"
+			break	
+		case 8:
+			shenzhu = "天相"
+			break		
+		case 9:
+			shenzhu = "天梁"
+			break	
+		case 10:
+			shenzhu = "天同"
+			break	
+		case 11:
+			shenzhu = "文昌"
+			break	
+		case 12:
+			shenzhu = "天机"
+			break		
+	}
+}
+
+function bu_daxian(daxian,shier_gong,ju,shunni){//大限
+	var start, end
+	var ming = locate("【命  宫】",shier_gong)
+	if(shunni = "shun"){
+		for(var i=1;i<13;i++){
+			end = (i*10) + ju
+			start = end - 9
+			if(start < 0){start = 0}
+			daxian[cycle(ming+i-1,12)] = start + "-" + end
+		}
+	}else {
+		for(var i=1;i<13;i++){
+			end = (i*10) + ju
+			start = end - 9
+			if(start < 0){start = 0}
+			daxian[cycle(ming-i+1,12)] = start + "-" + end
+		}
+	}
+
+}
+
+function bu_zhangsheng(zhangsheng,ju,shunni){//长生
+	var jushu = ju[1]
+	switch(jushu){
+		case "2":
+			if(shunni=="shun"){
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(9+i-1,12)] = shier_zhangsheng[i] 
+				}
+			} else {
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(9-i+1,12)] = shier_zhangsheng[i] 
+				}
+			}
+			break
+		case "3":
+			if(shunni=="shun"){
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(12+i-1,12)] = shier_zhangsheng[i] 
+				}
+			} else {
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(12-i+1,12)] = shier_zhangsheng[i] 
+				}
+			}
+			break
+		case "4":
+			if(shunni=="shun"){
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(6+i-1,12)] = shier_zhangsheng[i] 
+				}
+			} else {
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(6-i+1,12)] = shier_zhangsheng[i] 
+				}
+			}
+			break
+		case "5":
+			if(shunni=="shun"){
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(9+i-1,12)] = shier_zhangsheng[i] 
+				}
+			} else {
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(9-i+1,12)] = shier_zhangsheng[i] 
+				}
+			}
+			break
+		case "6":
+			if(shunni=="shun"){
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(3+i-1,12)] = shier_zhangsheng[i] 
+				}
+			} else {
+				for(var i=1; i<13;i++){
+					zhangsheng[cycle(3-i+1,12)] = shier_zhangsheng[i] 
+				}
+			}
+			break
+	}
+}
+function sihua(gan,zhuxing){
+	var h
+	switch(gan) {
+		case "甲":
+			if(zhuxing=="廉贞") {
+				h = "禄"
+			} else if(zhuxing=="破军") {
+				h = "权"
+			} else if(zhuxing=="武曲") {
+				h = "科"
+			} else if(zhuxing=="太阳"){
+				h = "忌"
+			}
+			break
+		case "乙":
+			if(zhuxing=="天机") {
+				h = "禄"
+			} else if(zhuxing=="天梁") {
+				h = "权"
+			} else if(zhuxing=="紫微") {
+				h = "科"
+			} else if(zhuxing=="太阴"){
+				h = "忌"
+			}
+			break
+		case "丙":
+			if(zhuxing=="天同") {
+				h = "禄"
+			} else if(zhuxing=="天机") {
+				h = "权"
+			} else if(zhuxing=="文昌") {
+				h = "科"
+			} else if(zhuxing=="廉贞"){
+				h = "忌"
+			}
+			break
+		case "丁":
+			if(zhuxing=="太阴") {
+				h = "禄"
+			} else if(zhuxing=="天同") {
+				h = "权"
+			} else if(zhuxing=="天机") {
+				h = "科"
+			} else if(zhuxing=="巨门"){
+				h = "忌"
+			}
+			break
+		case "戊":
+			if(zhuxing=="贪狼") {
+				h = "禄"
+			} else if(zhuxing=="太阴") {
+				h = "权"
+			} else if(zhuxing=="右弼") {
+				h = "科"
+			} else if(zhuxing=="天机"){
+				h = "忌"
+			}
+			break
+		case "己":
+			if(zhuxing=="武曲") {
+				h = "禄"
+			} else if(zhuxing=="贪狼") {
+				h = "权"
+			} else if(zhuxing=="天梁") {
+				h = "科"
+			} else if(zhuxing=="文曲"){
+				h = "忌"
+			}
+			break
+		case "庚":
+			if(zhuxing=="太阳") {
+				h = "禄"
+			} else if(zhuxing=="武曲") {
+				h = "权"
+			} else if(zhuxing=="太阴") {
+				h = "科"
+			} else if(zhuxing=="天同"){
+				h = "忌"
+			}
+			break
+		case "辛":
+			if(zhuxing=="巨门") {
+				h = "禄"
+			} else if(zhuxing=="太阳") {
+				h = "权"
+			} else if(zhuxing=="文曲") {
+				h = "科"
+			} else if(zhuxing=="文昌"){
+				h = "忌"
+			}
+			break
+		case "壬":
+			if(zhuxing=="天梁") {
+				h = "禄"
+			} else if(zhuxing=="紫微") {
+				h = "权"
+			} else if(zhuxing=="左辅") {
+				h = "科"
+			} else if(zhuxing=="武曲"){
+				h = "忌"
+			}
+			break
+		case "癸":
+			if(zhuxing=="破军") {
+				h = "禄"
+			} else if(zhuxing=="巨门") {
+				h = "权"
+			} else if(zhuxing=="太阴") {
+				h = "科"
+			} else if(zhuxing=="贪狼"){
+				h = "忌"
+			}
+			break
+	}
+	
+}
+
+function bu_doujun(doujun,yue_num,c){
+	for(var i=1;i<13;i++){
+		doujun[i] = ""
+	}
+	var h = cycle(c.hGz(),12)
+	
+	doujun[cycle(h-yue_num+1,12)] = "斗君"
+}

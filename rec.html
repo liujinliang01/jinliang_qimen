@@ -1,0 +1,36 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<script language="javascript" src="db/mob_db.js"></script>
+<script language="javascript" src="qimen/qimen_ref.js"></script>
+<link rel="stylesheet" type="text/css" href="html/genetic.css" />
+
+</style>
+<script>
+
+</script>
+</head>
+<body onload="showAll()">
+<!--
+<form name=dum method=post action="">
+<input type=hidden id=nian />
+<input type=hidden id=yue />
+<input type=hidden id=ri />
+<input type=hidden id=shi />
+<input type=hidden id=hidden_zhuade />
+<input type=hidden id=fen />
+<input type=hidden id=yilin_num />
+</form>
+-->
+<script>
+//alert(window.top.localStorage.getItem(1))
+showAll()
+</script>
+<button type=submit id=clear_rec onclick="clear_recs()"> 清除所有记录</button>
+<table id="recs" border=1 border-color=red>
+<th id=ord>序号</th><th id=ord>起卦时间</th><th id=ord>抓得时柱</th><th id=dong>动宫</th><th id=ord>易林序号</th>
+
+</table>
+
+</body>
+
+</html>

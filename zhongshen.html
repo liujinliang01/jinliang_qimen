@@ -1,0 +1,242 @@
+<html>
+<!--
+/************************************
+* 名称：奇门布局                    *
+* 作者：刘金亮                      *
+* 缘起：为方便大规模采集奇门数据，  *
+* 解决暗干、天书定局数、多种方法起  *
+* 局、摆脱对互联网的依赖等等问题，  *
+* 迫切需要根据自己需要的自动化起局  *
+* 软件。恰巧北大的汪洋制作了一个万  *
+* 年历软件，在网上公开了，省却了我  *
+* 不少功夫，得以专注于奇门布局的开  *
+* 发。断断续续于2004年4-9月份所作   *
+************************************/
+-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>金亮奇门研究软件</title>
+<script language="javascript" src="ccc0.1/ccc.js"></script>
+<script language="javascript" src="qimen/qimen_ref.js"></script>
+<script>
+
+function get_value() {
+	get_six(top.cal.dum)
+
+	xingshi = parseInt(top.cal.dum.xingshi.value)
+	actual_shi = shi
+	shi = xingshi_shizhu(cycle(xingshi,12))
+
+	var zhance_shijian = top.cal.dum.zhance_shijian.value
+	if(zhance_shijian == "auto_gen") {
+		var cur = new Date()
+		cur_ccc = new CCC(cur.getFullYear(), cur.getMonth() +1, cur.getDate(), cur.getHours()+':'+cur.getMinutes,8,1)
+		cur_shizhu = cur_ccc.hGz_Str()
+		cur_shizhu = cur_shizhu.substr(1,2)
+		cur_shizhi = cycle(cur_ccc.hGz(),12)
+		//document.write("<br> cur_shizhi = " + cur_shizhi)
+	} else {
+		cur_shizhu = zhance_shijian.substr(0,1)
+		cur_shizhi = zhance_shijian.substr(1,2)
+	}
+
+}
+
+</script>
+
+</head>
+
+<body>
+<script>
+var nian, yue, ri, shi,fen, jq_yuan, liunian, xingshi, angan, cur_ccc, cur_shizhi, cur_shizhu
+var chosen_ju_num = new Array(2)
+var ju_num = new Array(2)
+var fushi_loc = ""
+get_value()
+var d_actual = new Date(nian, cycle(yue+1,12), ri, actual_shi, fen)
+var d = new Date(nian, yue, ri, shi, fen)
+var month = d.getMonth()
+var bc_year = nian
+if(nian <0){
+	bc_year = nian + 1 
+}
+var c = new CCC(bc_year,month+1,d.getDate(),d.getHours()+':'+d.getMinutes(),8,1)
+var di, di_info, tian, dai_gan, an, di_shen, tian_shen, xing, men 
+var niangan = sizhu_gan(c.yGz())
+var yuegan = sizhu_gan(c.mGz())
+var rigan = sizhu_gan(c.dGz())
+var shigan = sizhu_gan(c.hGz())
+var jushu, zhishi
+var xunshou = find_xunshou(c.hGz())
+
+angan = fengan(c.hGz(),cur_shizhi)
+
+</script>
+
+
+<script>
+document.write("姓氏笔画：" + xingshi + "画")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;占测时间：" + cur_shizhu + "时")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;暗干: " + angan + "<br>")
+
+print_header(d_actual,c, "田氏奇门算命法一（田氏旬首定局法）：")
+
+ju_num = tianshi_dingju(tianshi_jq_yuan(c))
+document.write(ju_num[2] + " " + ju_num[0])
+fushi_loc = buju_zhuan(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+/*
+for(var i=1; i < ma.length; i++) {
+	ma[i] = "<font color=white>马</font>"
+}
+
+//bu_ma(c.dGz_Str()) //加上日马
+
+for(var i=1; i < kong.length; i++) {
+	kong[i] = "<font color=white>空</font>"
+}
+*/
+
+bu_ma(c.hGz_Str()) //时马
+bu_kong(xunshou,"#99CCFF") //时空
+//bu_kong(find_xunshou(cycle(liunian-3,60)))//流年空
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(angan,tian,"#CCCCCC")
+mark_bg(angan,di,"#CCCCCC")
+mark_bg(angan,an,"#CCCCCC")
+
+</script>
+<br>
+<script type="text/javascript">
+document.write("<br>")
+output_zhuan()
+</script>
+
+<script>
+document.write("<br>姓氏笔画：" + xingshi + "画")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;占测时间：" + cur_shizhu + "时")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;暗干: " + angan + "<br>")
+
+print_header(d_actual,c, "田氏奇门算命法二（传统拆补定局）：")
+
+ju_num = choose_ju_num(c, chosen_ju_num)
+document.write(ju_num[2] + " " + ju_num[0])
+fushi_loc = buju_zhuan(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+for(var i=1; i < ma.length; i++) {
+	ma[i] = "<font color=white>马</font>"
+}
+bu_ma(c.hGz_Str()) //时马
+//bu_ma(c.dGz_Str()) //加上日马
+
+for(var i=1; i < kong.length; i++) {
+	kong[i] = "<font color=white>空</font>"
+}
+bu_kong(xunshou,"#99CCFF") //时空
+//bu_kong(find_xunshou(cycle(liunian-3,60)))//流年空
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(angan,tian,"#CCCCCC")
+mark_bg(angan,di,"#CCCCCC")
+mark_bg(angan,an,"#CCCCCC")
+
+</script>
+<br>
+
+
+<script type="text/javascript">
+document.write("<br>")
+output_zhuan()
+</script>
+
+<script>
+document.write("<br>姓氏笔画：" + xingshi + "画")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;占测时间：" + cur_shizhu + "时")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;暗干: " + angan + "<br>")
+
+print_header(d_actual,c, "田氏奇门算命法三（传统拆补飞盘）：")
+
+ju_num = choose_ju_num(c, chosen_ju_num)
+document.write(ju_num[2] + " " + ju_num[0])
+fushi_loc = buju_zhigui(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+for(var i=1; i < ma.length; i++) {
+	ma[i] = "<font color=white>马</font>"
+}
+bu_ma(c.hGz_Str()) //时马
+//bu_ma(c.dGz_Str()) //加上日马
+
+for(var i=1; i < kong.length; i++) {
+	kong[i] = "<font color=white>空</font>"
+}
+bu_kong(xunshou,"#99CCFF") //时空
+//bu_kong(find_xunshou(cycle(liunian-3,60)))//流年空
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(angan,tian,"#CCCCCC")
+mark_bg(angan,di,"#CCCCCC")
+mark_bg(angan,an,"#CCCCCC")
+
+</script>
+
+<script type="text/javascript">
+document.write("<br>")
+output_fei()
+</script>
+
+
+<script>
+document.write("<br>姓氏笔画：" + xingshi + "画")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;占测时间：" + cur_shizhu + "时")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;暗干: " + angan + "<br>")
+
+print_header(d_actual,c, "田氏奇门算命法四（天书定局法）：")
+
+ju_num = choose_ju_num(c,chosen_ju_num)
+document.write(ju_num[2] + " " + ju_num[0])
+fushi_loc = buju_tianshu(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+for(var i=1; i < ma.length; i++) {
+	ma[i] = "<font color=white>马</font>"
+}
+bu_ma(c.hGz_Str()) //时马
+//bu_ma(c.dGz_Str()) //加上日马
+
+for(var i=1; i < kong.length; i++) {
+	kong[i] = "<font color=white>空</font>"
+}
+bu_kong(xunshou,"#99CCFF") //时空
+//bu_kong(find_xunshou(cycle(liunian-3,60)))//流年空
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(angan,tian,"#CCCCCC")
+mark_bg(angan,di,"#CCCCCC")
+mark_bg(angan,an,"#CCCCCC")
+
+</script>
+<br>
+
+
+<script type="text/javascript">
+document.write("<br>")
+output_tianshu()
+</script>
+<br>　</p>
+</body>
+</html>

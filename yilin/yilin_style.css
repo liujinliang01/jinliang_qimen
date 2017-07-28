@@ -1,0 +1,32 @@
+/*
+body{
+line-height:100%;
+font-family:宋体;
+font-size:四;
+ filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='navajowhite', EndColorStr='palegoldenrod');
+}
+table{
+border-color:red;
+border-spacing: 0px;
+border-collapse: collapse;
+line-height:100%;
+font-family:宋体;
+font-size:四;
+}
+td{
+border-color:red;
+text-align:left;
+line-height:100%;
+}
+#mougua_zhi_mougua,#xiang_mougua_zhi_mougua{
+font-family:宋体;
+font-size:40;
+background-color;
+}
+
+#linci_words,#xiang_linci{
+font-family:宋体;
+font-size:24;
+background-color:white;
+}
+*/

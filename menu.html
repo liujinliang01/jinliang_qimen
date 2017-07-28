@@ -1,0 +1,106 @@
+﻿<html>
+<head>
+<script language=javascript src="ccc0.1/ccc.js"></script>
+<script language=javascript src="qimen/qimen_ref.js"></script>
+<SCRIPT>function doNothing(){return true}</SCRIPT>
+<script>
+var show = 1
+function reshow() {
+	if(show==0){
+		window.onerror=function doNothing(){return true}
+		top.window.moveBy(-2000,-2000)
+		show=1
+	}
+}
+
+
+function minimize() 
+{
+	top.window.moveBy(2000,2000)
+	show=0
+}
+
+function mouseover(o){
+	o.className="over"
+}
+function mouseout(o){
+	o.className="out"
+}
+</script>
+
+<style>
+body{
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#000000', EndColorStr='#0000FF');
+}
+
+table{
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='violet', EndColorStr='blue');
+}
+img{
+	BORDER-RIGHT: #7EBF4F 1px solid; 
+	PADDING-RIGHT: 2px; 
+	BORDER-TOP: #7EBF4F 1px solid; 
+	PADDING-LEFT: 2px; 
+	BORDER-LEFT: #2C59AA 1px solid; 
+	CURSOR: hand; 
+	COLOR: black; 
+	PADDING-TOP: 2px; 
+	BORDER-BOTTOM: #2C59AA 2px solid;
+	border-style:outset;
+}
+button{	
+	size: 40;
+	height: 30;
+	FONT-SIZE: 20;	
+	font-family:华文新魏;
+	CURSOR: hand; 
+	COLOR: black; 
+	border-style:outset;
+	border-width:2;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='darkorange', EndColorStr='chocolate')
+}
+.over{
+	background-color:yellow;
+}
+.out{
+	background-color:buttonface;
+}
+
+</style>
+
+</head>
+
+<body topmargin="0" rightmargin="0" leftmargin="0" onfocus="reshow()">
+<form id="menu_bar" method="post" action="">
+<table width="100%" border="1" width="100%" style="border-collapse:collapse">
+    <tr style="vertical-align:top">
+        <td width="5%">
+ 		<img name=icon src="icon\OverMexico.gif"/>		
+        </td>
+        <td width="25%">
+ 		金亮奇门软件研究版 V19		
+        </td>
+        <td width="25%">
+ 		<IMG SRC="icon/yy.gif" width=35 height=30>		
+        </td>
+        <td width="40%" align=left>
+        	<button id=db onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="top.cal.location='cal.html'"> 正时起局</button>
+			
+			<!--
+        	<button id=zhuaji  onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="top.cal.location='zhuaji.html'">抓机起局</button>
+			-->
+        	<button id=zhuaji  onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="top.cal.location='zhuaji.html'">抓机起局</button>
+       		<button id=zhuaji  onmouseover="mouseover(this)" onmouseout="mouseout(this)" onclick="top.cal.location='baoshu.html'">复盘报数</button>
+        </td>
+        <td width="30%" bgcolor="buttonface" align=right>
+		<!--
+        	<img name=min onclick="window.top.blur()" src="icon\min.bmp"/>
+		-->
+        	<img name=min onclick="minimize()" src="icon\min.bmp"/>
+		<img name=close onclick="window.top.close()" src="icon\close.bmp"/>
+        </td>
+    </tr>
+<table>
+</form>
+</body>
+</html>

@@ -1,0 +1,547 @@
+﻿<html>
+<head>
+<script language=javascript src="ccc0.1/ccc.js"></script>
+<script language="javascript" src="qimen/qimen_ref.js"></script>
+<SCRIPT>function doNothing(){return true}
+</SCRIPT>
+<link rel="stylesheet" type="text/css" href="html/genetic.css" />
+<!--
+<SCRIPT>
+function window_onload(){
+	db_button.width = 20
+	db_button.height = 20
+	qiju_button.width = 20
+	qiju_button.height = 20
+	min_button.width = 20
+	min_button.height = 20
+	resize_button.width = 20
+	resize_button.height = 20
+	close_button.width = 20
+	close_button.height = 20
+	min_button.Picture = LoadPicture("icon\min.bmp")
+	resize_button.Picture = LoadPicture("icon\resize.bmp")
+	close_button.Picture = LoadPicture("icon\close.bmp")
+}
+
+
+</SCRIPT>
+-->
+<script>
+function set_val(variable,val){
+	variable = val
+}
+
+var cur_y, cur_m, cent, nian, yue, ri, shi, fen, hour, minute, start,liuyue,liuri,liushi
+var d = new Date()
+nian = d.getFullYear()
+cur_y = nian
+yue = d.getMonth() + 1
+liuyue = yue
+cur_m = yue
+
+ri = d.getDate()
+liuri = ri
+shi = d.getHours()
+liushi = shi
+fen = d.getMinutes()
+</script>
+
+<script>
+function days_in_month (year, month) {
+     return 32 - new Date(year, month, 32).getDate();
+}
+
+var sels = new Array(4)
+var s1, s2, s3, s4, s5, s6, s7, s
+function set_cent(o){
+	s1 = "window.location='baoshu.html?cent="
+	s2 = eval(o.value)
+	s3 = "&y="
+	s4 = eval(document.dum.y.value)
+	s5 = "&m="
+	s6 = eval(document.dum.m.value)	
+	s7 = "'"
+	s = s1 + s2 + s3 + s4 + s5 + s6 + s7
+	return s
+}
+
+function set_y(o){
+	s1 = "window.location='baoshu.html?cent="
+	s2 = eval(document.dum.century.value)
+	s3 = "&y="
+	s4 = document.dum.y.value
+	s5 = "&m="
+	s6 = eval(document.dum.m.value)
+	s7 = "'"
+	s = s1 + s2 + s3 + s4 + s5 + s6 + s7
+	return s
+}
+
+function set_m(o){
+	s1 = "window.location='baoshu.html?cent="
+	s2 = eval(document.dum.century.value)
+	s3 = "&y="
+	s4 = eval(document.dum.y.value)
+	s5 = "&m="
+	s6 = eval(o.value)	
+	s7 = "'"
+	s = s1 + s2 + s3 + s4 + s5 + s6 + s7
+	return s
+}
+
+
+function set_r(){
+	s1 = 'window.location="baoshu.html?cent='
+	s2 = eval(document.dum.century.value)
+	s3 = '&y='
+	s4 = eval(document.dum.y.value)
+	s5 = '&m='
+	s6 = eval(document.dum.m.value)
+	s7 = '&r='
+	s = s1 + s2 + s3 + s4 + s5 + s6 + s7
+	return s	
+}
+
+function get_values() {
+window.onerror=function doNothing(){return true}
+	var s = window.location.search
+	if(s=="") {return} // on first load, s will be empty. Then we don't want to change the default values.
+	s = s.substring(s.indexOf("?")+5,s.length)
+	sels = s.split("=") //sel[0] = "", sels[1] = year, sels[2] = month
+
+	var j = sels[1].substring(0,sels[1].indexOf("&"))
+	if(!isNaN(j)){
+		cent = j
+	}
+
+	var k = sels[2].substring(0,sels[2].indexOf("&"))
+	if(!isNaN(k)){
+		nian = k
+	//alert("nian = " + nian)
+	}
+	var l = sels[3]
+	if (l.indexOf("&") != -1) {
+		l = l.substr(0,l.indexOf("&"))
+	}
+	if(!isNaN(l)) {
+		yue = l
+	}
+
+	var n = sels[4]
+	if(!isNaN(n)) {
+		ri = n
+	}
+}
+
+</script>
+<script>
+var a = new Array(61)
+var n1,n2
+var tmp
+function populate_60(){
+	for(var i = 1; i<61; i++){
+		a[i] = i
+	}
+}
+
+function shuffle(k){
+	var i
+	for(i = 1; i<(k+1); i++){		
+		n = cycle(Math.round(Math.random()*60),60)
+		tmp = a[n]
+		a[n] = a[i]
+		a[i] = tmp
+	}	
+}
+</script>
+
+<style>
+a:link{
+color: yellow
+}
+body{
+	background-image: url(icon/blue.jpg);
+	background-repeat: repeat-x
+}
+button{	
+	size: 45;
+	height: 25;
+	FONT-SIZE: 15;	
+	font-family:arial;
+	CURSOR: hand; 
+	COLOR: black; 
+	border-style:outset;
+	border-width:0;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='coral', EndColorStr='orange')
+}
+
+table{
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='coral', EndColorStr='maroon')
+}
+td {
+font-weight: none;
+font-size: 12pt;
+border-width: 1px
+}
+
+table.choice{
+background-color:white
+}
+</style>
+
+<script>
+get_values()
+</script>
+
+</head>
+<body>
+
+<script>
+var start
+start = Math.floor(d.getFullYear()/100)
+start = start + 1
+if(cent == undefined){
+	cent = start
+}
+
+</script> 
+
+<center>
+<form name=dum method=post action="">
+
+<table border=0 class=choice>
+	<tr>
+	<td>
+		<table>
+		<tr>
+		<td>
+		<select name=century onchange="eval(set_cent(this))">
+		<script>
+		for(var i = start; i > -10; i--) {
+			if(i > 0) {
+				if(i == cent) {
+					document.write('<option selected value=' + i + '> 公元' + i + '世纪</option>')	
+				} else {
+					document.write('<option value=' + i + '> 公元' + i + '世纪</option>')
+				}
+			} else if (i < 0) {
+				if(i == cent) {
+					document.write('<option selected value=' + i + '> 公元前' + (-i) + '世纪</option>')
+				} else {
+					document.write('<option value=' + i + '> 公元前' + (-i) + '世纪</option>')
+				}
+			}
+		}
+		</script>
+		</select>
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+		<select name=y onchange="eval(set_y(this))">
+		<script>	
+		if (cent > 0) {
+			cent = cent - 1
+		}
+		var n = cent*100
+		//alert("n = " + n)
+ 		for(var i = 0; i < 102; i++) {
+			var x = n + i
+			if(x == 0) {
+				continue
+			}
+			if(x == nian) {
+ 				document.write("<option selected value=" + x + ">" + x + "年</option>")
+			} else {
+ 				document.write("<option value=" + x + ">" + x + "年</option>")
+			} 
+ 		}
+		</script>
+		</select>
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+		<select name=m onchange="eval(set_m(this))">
+		<script>
+		for(var i = 1; i < 13; i++) {
+			if(i == yue) {
+ 				document.write("<option selected value=" + i + ">" + i + "月</option>")
+			} else {
+ 				document.write("<option value=" + i + ">" + i + "月</option>")
+			} 
+		}
+		</script>
+		</select>
+		</td>
+		</tr>
+
+		</table>
+	</td>
+
+<!--cal_table.html-->
+	<td>
+		<script>
+		if(!isNaN(nian)){
+			nian = document.dum.y.value
+		}
+
+		if(parseInt(nian) < 0) {
+			c = new CCC(parseInt(nian) + 1, yue, 15)
+		} else {
+			c = new CCC(nian, yue,15)
+		}
+
+
+		var ygz = c.yGz_Str()
+		var xingqi = c.day()
+		</script>
+
+		<table class=jieqi_header>
+		<script>
+		var cal_month = new CCC(nian,yue,15)
+ 		var jq = c.solarTerm()
+		document.write("<tr><td>" + nian + "年 " + ygz + " "+ yue + "月" +cal_month.mGz_Str() +"</td></tr>")	
+		document.write("<tr><td>交节：" + jq.sTermInMonth[0] + " " + jq.sTermInMonth[1]+ "</td></tr>")
+		</script>
+		</table>
+
+		<table border=1 class=cal>
+			<tr>
+			<td class=weekends>星期日</td>
+			<td>星期一</td>
+			<td>星期二</td>
+			<td>星期三</td>
+			<td>星期四</td>
+			<td>星期五</td>
+			<td class=weekends>星期六</td>
+			</tr>
+
+			<script>
+			var z, lun, count
+			count = 1
+			var max = days_in_month(nian, yue-1)
+			
+			if(parseInt(nian) < 0) {
+				nian = parseInt(nian) + 1
+			}
+			
+			var st = set_r()
+
+			for(var i=1; i < 7; i++) {
+
+			document.write("<tr style='font-size:10pt'>")
+			{
+				for(var j=0; j<7; j++) {
+
+				if((count == 1) && (j<xingqi)){			
+					document.write("<td> &nbsp;&nbsp;</td>")
+				} else if (count > max) { 
+					document.write("<td> &nbsp;&nbsp;</td>")
+				} else {
+				z = new CCC(nian, yue, count)
+				lun = z.lunar()
+				lun_str = lun.lunarDate_Str
+				count = parseInt(eval(count))
+				if(lun_str == "初一"){
+					document.write("<td style='cursor:hand;font-size=9pt' onclick='" + st +count + "\"'><font color=blue>"  + count + lun.lunarMonth_Str + "月<br>" + "&nbsp;&nbsp;" + z.dGz_Str() + "</font></td>")
+				} else {
+					document.write("<td style='cursor:hand' onclick='" + st + count + "\"'>" + count + lun_str  + "<br>" + "&nbsp;&nbsp;" + z.dGz_Str() + "</font></td>")
+				}
+				count++	
+			}
+		}
+	}
+	document.write("</tr>")	
+
+} 
+			</script>
+			</table>
+
+			<table>
+			<tr bgcolor='#FFCC99'>
+			<td>
+			<script>
+			if(nian < 1) {
+				nian = nian - 1
+			}
+			document.write(nian + "年")
+			</script>
+			</td>
+
+			<td>
+			<script>
+			if (z.month()==1) {
+				document.write("未交立春，故用" + (nian -1) + "年干支" + z.yGz_Str())
+			} else {
+				document.write(z.yGz_Str())
+			}
+			</script>
+			</td>
+
+			</tr>
+			</table>
+	</td>
+
+
+<td>
+<!--choice-->
+<center>
+<A HREF="man.html" target="_blank"> 《金亮奇门系列软件》研究版使用说明 </a>
+
+<table style="background-color:white">
+
+<tr>
+
+<td>
+<select id=year>
+
+<script>
+
+start = floor(nian/100)
+
+var n = start*100
+
+ for(var i = -1; i < 102; i++) {
+	var x = n + i
+	if(x==0) {
+		continue
+	}
+	if(x == nian) {
+ 		document.write("<option selected value=" + x + ">" + x + "年</option>")
+	} else {
+ 		document.write("<option value=" + x + ">" + x + "年</option>")
+	} 
+ }
+</script>
+</select>
+</td>
+
+
+<td>
+<select id=yue>
+<script>
+ for(var i = 1; i < 13; i++) {
+	if(i == yue) {
+ 		document.write("<option selected value=" + i + ">" + i + "月</option>")
+	} else {
+ 		document.write("<option value=" + i + ">" + i + "月</option>")
+	} 
+ }
+</script>
+</select>
+</td>
+
+<td>
+<select id="ri" onchange="set_val(document.dum.ri,this)">
+<script>
+for (var i = 1; i < 32; i++) {
+	if (i == ri) {
+		document.write("<option selected value=" + i + ">" + i + "日</option>")
+	} else {
+		document.write("<option value=" + i + ">" + i + "日</option>")
+	}
+}
+</script>
+</select>
+</td>
+
+<td>
+<select name="shi">
+
+<script>
+if(isNaN(shi)){
+	shi = d.getHours()
+}
+
+for (var i = 0; i < 25; i++) {
+	if(i == shi) {
+		document.write("<option selected value=" + i + ">" + i + "时</option>")
+	//document.write("<option  selected = " + h + " value=" + i + ">" + i + "时</option>")
+	} else {
+		document.write("<option value=" + i + ">" + i + "时</option>")		
+	}
+}
+</script>
+</select>
+</td>
+
+<td>
+<select id="fen">
+<script>
+if(isNaN(fen)){
+	fen = d.getMinutes()
+}
+
+for (var i = 0; i < 60; i++) {
+	if(i == fen) {
+	//document.write("<option selected value=" + i + ">" + i + "分</option>")
+		document.write("<option selected value=" + i + ">" + i + "分</option>")
+	} else {
+		document.write("<option value=" + i + ">" + i + "分</option>")
+	}
+}
+</script>
+</select>
+</td>
+
+<td>
+<select selected="zidong" id="jushu">
+<option value="自动拆补定局">自动拆补定局</option>
+<option value="阳一局 1">阳一局 </option>
+<option value="阳二局 2">阳二局 </option>
+<option value="阳三局 3">阳三局 </option>
+<option value="阳四局 4">阳四局 </option>
+<option value="阳五局 5">阳五局 </option>
+<option value="阳六局 6">阳六局 </option>
+<option value="阳七局 7">阳七局 </option>
+<option value="阳八局 8">阳八局 </option>
+<option value="阳九局 9">阳九局 </option>
+<option value="阴一局 -1">阴一局 </option>
+<option value="阴二局 -2">阴二局 </option>
+<option value="阴三局 -3">阴三局 </option>
+<option value="阴四局 -4">阴四局 </option>
+<option value="阴五局 -5">阴五局 </option>
+<option value="阴六局 -6">阴六局 </option>
+<option value="阴七局 -7">阴七局 </option>
+<option value="阴八局 -8">阴八局 </option>
+<option value="阴九局 -9">阴九局 </option>
+</select>
+</td>
+
+</tr>
+</table>
+<input type=hidden value=0 id=hidden_zhuade>
+<table>
+<script>
+
+populate_60()
+var x
+for(var i=1; i<7; i++){
+	document.write("<tr>")		
+		for(var k=1; k<11;k++){
+			x =  ((i-1)*10) + k
+			document.write("<td><button size=30 name=b" + x + " onclick=\"eval(document.dum.hidden_zhuade.value=this.name);top.main.location='baoshu_jumian.html?n=" + a[x] + "'\">" + huajia[x] + "</button></td>")
+		}
+ 	document.write("</tr>")
+}
+
+</script>
+
+<tr>
+</tr>
+</table>
+
+
+</center>
+</td>
+
+</tr>
+</table>
+</form>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿
+.ext_env,.di_gong{
+border: 2px solid red;
+}
+
+span.ri_jian{//not working
+border: 1px 
+border-color:red;
+}
+
+<!--
+option {
+background: bisque;
+color: black;
+}
+-->
+
+option {
+background: white;
+color: black;
+}
+
+table.cal{
+border-collapse: collapse;
+background-color: silver;
+filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='orange', EndColorStr='coral')
+font-size:16;
+}
+
+.jieqi_header{
+font-color:blue;
+filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='lawngreen', EndColorStr='orange')
+}
+
+td.weekends{
+color:blue;
+}
+
+body{
+linespacing:0;
+line-height:100%;
+font-family:宋体;
+font-size:16;
+ /*filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='goldenrod', EndColorStr='palegoldenrod')
+*/
+ }
+
+table{
+border-spacing: 0px;
+border-collapse: collapse;
+border-color: red;
+line-height:100%;
+linespacing:0px;
+font-family:宋体;
+font-size:20px;
+}
+
+button{
+text-align:left;
+font-size:100%;
+}
+td{
+border-color: blue;
+align:top;
+text-align:left;
+linespacing:0;
+line-height:100%;
+}
+#mougua_zhi_mougua{
+font-family:宋体;
+font-size:16;
+background-color;
+}
+
+#linci_words{
+font-family:宋体;
+font-size:16;
+background-color:white;
+}

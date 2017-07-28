@@ -1,0 +1,8 @@
+var ziwei_xi = new Array("","紫微","天机","&nbsp;&nbsp;","太阳","武曲","天同","&nbsp;&nbsp;","&nbsp;&nbsp;","廉贞","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;")
+var tianfu_xi = new Array("","天府","太阴","贪狼","巨门","天相","天梁","七杀","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","破军",,"&nbsp;&nbsp;","&nbsp;&nbsp;")
+var shiergong = new Array("","【命  宫】","【兄弟宫】","【妻财宫】","【子孙宫】","【财帛宫】","【疾厄宫】","【迁移宫】","【奴仆宫】","【官禄宫】","【田宅宫】","【福德宫】","【父母宫】")
+var tuo_lu_yang_xi = new Array("","陀螺","禄存","擎羊","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;","&nbsp;&nbsp;")
+var boshi_xi = new Array("","博士","力士","青龙","小耗","将军","奏疏","飞廉","喜神","病符","大耗","伏兵","官符")
+var shier_zhangsheng = new Array("","长生","沐浴","冠带","临官","帝旺","衰","病","死","墓","绝","胎","养")
+var suijian_xi = new Array("","岁建","晦气","丧门","贯索","官符","小耗","大耗","龙德","白虎","天德","吊客","病符")
+var jiangxing_xi = new Array("","将星","攀鞍","岁驿","息神","华盖","劫煞","灾煞","天煞","指背","咸池","月煞","亡神")

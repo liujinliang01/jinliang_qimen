@@ -1,0 +1,276 @@
+﻿<html>
+<!--
+/************************************
+* 名称：奇门布局                    *
+* 作者：刘金亮                      *
+* 缘起：为方便大规模采集奇门数据，  *
+* 解决暗干、天书定局数、多种方法起  *
+* 局、摆脱对互联网的依赖等等问题，  *
+* 迫切需要根据自己需要的自动化起局  *
+* 软件。恰巧北大的汪洋制作了一个万  *
+* 年历软件，在网上公开了，省却了我  *
+* 不少功夫，得以专注于奇门布局的开  *
+* 发。断断续续于2004年4-9月份所作   *
+************************************/
+-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>金亮奇门研究软件</title>
+<script language="javascript" src="ccc0.1/ccc.js"></script>
+<script language="javascript" src="qimen/qimen_ref.js"></script>
+<script>
+
+function get_value() {
+
+ 	get_six(top.cal.dum)
+	liunian = parseInt(top.cal.dum.liu_year.value)
+	var ln = new CCC(liunian, 8,8) //我们要求流年的年干，月日无所谓，随意取8月8日
+	liunian_ganzhi = ln.yGz_Str()
+	liunian_taisui = sizhu_gan(ln.yGz())
+	angan = sizhu_gan(ln.yGz())
+	actual_shi = shi
+	shi = liunian_shizhu(liunian)
+	xingbie = top.cal.dum.xingbie.value
+}
+
+function mark_ri_angan(){
+	mark(rigan,tian, "red")
+	mark(rigan,di, "red")
+	mark(rigan,an, "red")
+	mark(angan,tian,"blue")
+	mark(angan,di,"blue")
+	mark(angan,an,"blue")
+}
+</script>
+<style>
+body{
+linespacing:0;
+line-height:100%;
+font-family:宋体;
+font-size:小四;
+ filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='sandyBrown', EndColorStr='Orange')
+}
+table{
+border-spacing: 0px;
+border-collapse: collapse;
+line-height:100%;
+linespacing:0px;
+font-family:宋体;
+font-size:五
+}
+td{
+text-align:center;
+linespacing:0;
+line-height:100%;
+}
+
+table#sizhu_bazi{
+font-size: 小四
+}
+table#dayun{
+font-size: 小四
+}
+
+</style>
+</head>
+
+<body>
+<script>
+
+var nian, yue, ri, shi, fen, jq_yuan, liunian, xingshi, angan, liunian_ganzhi, liunian_taisui, actual_shi,xingbie
+var dayun_name = new Array(10)
+var dayun_range = new Array(10)
+var chosen_ju_num = new Array(2)
+var ju_num = new Array(2)
+var fushi_loc = ""
+
+get_value()
+//document.write(nian + " " + yue + " " + ri + " " + actual_shi + " " + fen)
+var d = new Date(nian, yue, ri, shi, fen)
+var month = d.getMonth()
+var bc_year = nian
+if(nian <0){
+	bc_year = nian + 1 
+}
+var c1 = new CCC(bc_year, cycle(yue + 1,12), ri, actual_shi+ ':' + fen, 8,1)
+var d1 = new Date(bc_year,cycle(yue + 1,12),ri,actual_shi,fen)
+
+var di, di_info, tian, dai_gan, an, di_shen, tian_shen, xing, men, new_shizhu, new_shizhu_str
+var niangan = sizhu_gan(c1.yGz())
+var yuegan = sizhu_gan(c1.mGz())
+var rigan = sizhu_gan(c1.dGz())
+var shigan = sizhu_gan(c1.hGz())
+var jushu, zhishi
+new_shizhu_str = zhoushi_shizhu(c1, liunian)
+new_shizhu = locate(new_shizhu_str, huajia)
+
+var xunshou = find_xunshou(new_shizhu)
+var ri_xunshou = find_xunshou(c1.dGz())
+</script>
+
+<script>
+print_bazi_header(c1,xingbie)
+document.write("<p>")
+var jisuiyun = bu_dayun(c1,d1,xingbie,liunian) //jisuiyun is an array. [0] is the sui_num. [1] is shunni
+output_bazi_dayun(jisuiyun)
+
+document.write("<br>&nbsp;")
+output_liunian_table(nian, liunian,jisuiyun,dayun_name,"#99CCFF")
+document.write("<p>")
+
+/*
+var nian90 = new Array(2)
+var yue90 = new Array(2)
+var ri90 = new Array(2)
+var shi90 = new Array(2)
+
+nian90 = find_90(c1.yGz_Str())
+yue90 = find_90(c1.mGz_Str())
+ri90 = find_90(c1.dGz_Str())
+shi90 = find_90(c1.hGz_Str())
+
+document.write("<br>&nbsp;")
+output_90(nian90,yue90,ri90,shi90)
+
+document.write("<br>&nbsp;")
+*/
+</script>
+
+<script>
+
+ju_num = choose_ju_num(c1, chosen_ju_num)
+zhoushi_jushu(c1, liunian)
+
+if(typeof c1 != "undefined"){
+	print_liunian_header()
+}
+print_header(d1,c1, "周氏流年法：")
+
+
+document.write("轮值时柱：" + new_shizhu_str)
+fushi_loc = buju_zhuan(angan, ju_num, new_shizhu)
+document.write(fushi_loc)
+
+mark_ri_angan()
+/*
+for(var i=1; i < ma.length; i++) {
+	ma[i] = "<font color=white>马</font>"
+}
+
+//bu_ma(c1.dGz_Str()) //加上日马
+
+for(var i=1; i < kong.length; i++) {
+	kong[i] = "<font color=white>空</font>"
+}
+*/
+
+//bu_kong(ri_xunshou,"#66FFFF") //日空
+bu_ma(c1.hGz_Str()) //时支即是流年干支，故时马即是流年马
+bu_kong(find_xunshou(cycle(liunian-3,60)),"#99CCFF")//流年空
+document.write("<br>")
+output_zhuan()
+</script>
+
+<!--以下是四种方法起局-->
+<!--
+<script>
+var c = new CCC(bc_year,cycle(yue+1,9),d.getDate(),d.getHours()+':'+d.getMinutes(),8,1)
+niangan = sizhu_gan(c.yGz())
+yuegan = sizhu_gan(c.mGz())
+rigan = sizhu_gan(c.dGz())
+shigan = sizhu_gan(c.hGz())
+jushu, zhishi
+xunshou = find_xunshou(c.hGz())
+ri_xunshou = find_xunshou(c.dGz())
+</script>
+
+<script>
+if(typeof c1 != "undefined"){
+	print_liunian_header()
+}
+
+print_header(d1,c1, "金亮流年法一（田氏旬首定局法）：")
+document.write(" 轮值时柱：" + c.hGz_Str())
+ju_num = tianshi_dingju(tianshi_jq_yuan(c))
+
+fushi_loc = buju_zhuan(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+mark_ri_angan()
+
+</script>
+<br>
+<script type="text/javascript">
+document.write("<br>")
+output_zhuan()
+</script>
+
+<script>
+if(typeof c1 != "undefined"){
+	print_liunian_header()
+}
+print_header(d1,c1, "金亮流年法二（传统拆补定局）：")
+document.write(" 轮值时柱：" + c.hGz_Str())
+ju_num = choose_ju_num(c, chosen_ju_num)
+
+fushi_loc = buju_zhuan(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+mark_ri_angan()
+</script>
+<br>
+
+
+<script type="text/javascript">
+document.write("<br>")
+output_zhuan()
+</script>
+<script>
+
+if(typeof c1 != "undefined"){
+	print_liunian_header()
+}
+print_header(d1,c1,"金亮流年法三（传统拆补飞盘）：")
+document.write(" 轮值时柱：" + c.hGz_Str())
+ju_num = choose_ju_num(c, chosen_ju_num)
+fushi_loc = buju_zhigui(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+mark_ri_angan()
+
+</script>
+<br>
+
+
+<script type="text/javascript">
+
+
+document.write("<br>")
+output_fei()
+document.write("<br>")
+
+</script>
+
+<script>
+if(typeof c1 != "undefined"){
+	print_liunian_header()
+}
+print_header(d1,c1,"金亮流年法四（天书定局法）：")
+document.write(" 轮值时柱：" + c.hGz_Str())
+ju_num = choose_ju_num(c,chosen_ju_num)
+
+fushi_loc = buju_tianshu(angan,ju_num,c.hGz())
+document.write(fushi_loc)
+mark_ri_angan()
+</script>
+<br>
+
+
+<script type="text/javascript">
+document.write("<br>")
+output_tianshu()
+</script>
+<br>　</p>
+-->
+</body>
+</html>

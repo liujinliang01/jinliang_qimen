@@ -1,0 +1,489 @@
+﻿<html xmlns:v="urn:schemas-microsoft-com:vml">
+
+<!--
+/************************************
+* 名称：奇门布局                    *
+* 作者：刘金亮                      *
+* 缘起：为方便大规模采集奇门数据，  *
+* 解决暗干、天书定局数、多种方法起  *
+* 局、摆脱对互联网的依赖等等问题，  *
+* 迫切需要根据自己需要的自动化起局  *
+* 软件。恰巧北大的汪洋制作了一个万  *
+* 年历软件，在网上公开了，省却了我  *
+* 不少功夫，得以专注于奇门布局的开  *
+* 发。断断续续于2004年4-9月份所作   *
+************************************/
+-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>四种起局法对比</title>
+<link rel="stylesheet" type="text/css" href="html/genetic.css" />
+<script language=javascript src="ccc0.1/ccc.js"></script>
+<script language="javascript" src="qimen/qimen_ref.js"></script>
+<script language="javascript" src="yilin/yilin_ref.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<SCRIPT>function doNothing(){return true}
+</SCRIPT>
+<SCRIPT>window.onerror = doNothing
+</SCRIPT>
+
+<script>
+var default_d = new Date()
+var nian, yue, ri, shi,fen, jq_yuan, zhuade_shizhu
+nian = default_d.getYear()
+yue = default_d.getMonth()
+ri = default_d.getDate()
+shi = default_d.getHours()
+fen = default_d.getMinutes()
+</script>
+
+<script>
+var total = 4096
+var lines = new Array(total+1) // arrays are zero based, but we won't use 0; we use 1-4096
+lines = load_array(lines)
+var a = new Array(8) //this is to store one line of linci: a[0]序号, a[1]本卦,a[2]之卦, a[3]林辞,a[4]尚注,[a5]本卦符号, a[6]之卦符号, a[7]备注
+var n = Math.floor(Math.random()*total+1)//a random number of yilin_lines
+</script>
+
+<script>
+function generate_yilin_line(){
+	n = Math.floor(Math.random()*total+1)
+	refresh_yilin_values(n)
+}
+</script>
+<!--
+<script>
+function refresh_yilin_values(){
+	n = Math.floor(Math.random()*total+1)
+	var min = d.getMinutes()
+	if (min<10){min = "0"+min}
+	var r = d.getFullYear() + "年" + (d.getMonth() + 1) + "月"+ d.getDate() + "日 " + d.getHours() + ":" + min
+	document.getElementById("shijian").innerHTML = r
+	document.getElementById("linci_num").innerHTML = n
+	document.getElementById("linci_words").innerHTML = "<font size=32>" + lines[n][1] + lines[n][5] + "<font size=4>之</font>" + lines[n][2] + lines[n][6] +"</font>：" + lines[n][3] 
+	document.getElementById("shangzhu").innerHTML = lines[n][4]	
+}
+</script>
+-->
+
+<script>
+function get_value() {
+	window.onerror=function doNothing(){return true}
+	if(typeof(top.cal.dum) != "undefined") {
+		get_six(top.cal.dum)
+	}
+
+	if(typeof(top.cal.dum.hidden_zhuade) != "undefined") {
+		zhuade_shizhu = top.cal.dum.hidden_zhuade.value
+	}
+
+}
+
+
+function handle_zhuade(zhua) {
+	if (zhua != 0) {
+		zhua = zhua.substr(1)
+		zhua = parseInt(zhua)
+		document.write("\n抓得时柱：" + huajia[zhua] + "\n")
+	}
+}
+
+
+</script>
+
+<!--
+color:white;
+ filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='sandyBrown', EndColorStr='Orange')
+-->
+
+<style>
+
+body{
+linespacing:0;
+line-height:100%;
+font-family:宋体;
+font-size:16;
+ filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='sandyBrown', EndColorStr='Orange')
+}
+
+table{
+border-spacing: 0px;
+border-collapse: collapse;
+line-height:100%;
+linespacing:0px;
+font-family:宋体;
+font-size:16;
+}
+td{
+text-align:left;
+linespacing:0;
+line-height:100%;
+}
+#mougua_zhi_mougua{
+font-family:宋体;
+font-size:40;
+background-color;
+}
+
+#linci_words{
+font-family:宋体;
+font-size:24;
+background-color:white;
+}
+
+</style>
+
+
+</head>
+
+<body>
+<font type=bold>
+
+<table>
+<tr>
+<td width=40%>
+
+<script>
+
+var chosen_ju_num = new Array(2)
+var ju_num = new Array(3)
+
+get_value()
+
+var d = new Date(nian, yue, ri, shi, fen)
+var d1 = new Date(nian, yue+1, ri, shi, fen)
+
+var month = d.getMonth() + 1
+var donggong
+
+
+if(month !="" && month != "undefined"){//on first load don't generate donggong
+	 //donggong = gen_donggong()
+	//mark_donggong(donggong,"zhuan")
+	month = month -1
+}
+
+
+var bc_year = nian
+if(nian <0){
+	bc_year = nian + 1 //for BC years, CCC is one more than shown, ie -1 is 0, -2 is -1, etc
+}
+var c = new CCC(bc_year,cycle(month+1,12),d.getDate(),d.getHours()+':'+d.getMinutes(),8,1)
+
+//alert(c.year() +"年" + c.month() + "月" + c.date() + "日" + c.hour() + "点" + c.minute() +"分")
+var lichun = c.solarTerm()
+var l = lichun.sTermInMonth[0]
+
+var di, di_info, tian, dai_gan, angan, di_shen, tian_shen, xing, men, di_yinshen, tian_yinshen, di_yinshen_info, tian_yinshen_info, huo_ganzhi, nayin, huo_xunwei
+var liuqin = new Array(11)
+var an_liuqin = new Array(11)
+
+di_yinshen = new Array(11)
+di_yinshen_info = new Array(11)
+
+tian_yinshen = new Array(11)
+tian_yinshen_info = new Array(11)
+
+huo_ganzhi = new Array(11)
+var tian_zhi = new Array(10)
+var di_zhi = new Array(10)
+
+nayin = new Array(11)
+huo_xunwei = new Array(11)
+
+var niangan = sizhu_gan(c.yGz())
+var yuezhu = c.mGz_Str()
+var yuegan = yuezhu.substr(0,1)
+var rizhu = c.dGz_Str()
+var rigan = rizhu.substr(0,1)
+var shizhu = c.hGz_Str()
+var shigan = shizhu.substr(0,1)
+var yue_jian = yuezhu.substr(1,2)
+var ri_jian = rizhu.substr(1,2)
+
+var jushu, zhishi
+var xunshou = find_xunshou(c.hGz())
+//alert("ri:"+xunshou)
+var ri_xunshou = find_xunshou(c.dGz())
+//alert(ri_xunshou[0])
+var fushi_loc = ""
+//var kong_gan = get_kong_gan(xunshou[0])
+var kong_rigan = get_kong_gan(ri_xunshou[0])
+var mingzhishi = new Array(10)
+var anzhishi = new Array(10)
+
+//nayin_yinshen(c.hGz())
+angan = shigan
+
+bu_ma(c.hGz_Str())
+
+//bu_kong(xunshou,"#99CCFF")
+
+</script>
+
+
+<script>
+
+ju_num = choose_ju_num(c, chosen_ju_num)
+fushi_loc = buju_zhuan(shigan,ju_num,c.hGz())
+
+</script>
+
+
+<script>
+
+ju_num = choose_ju_num(c, chosen_ju_num)
+
+</script>
+
+
+<script type="text/javascript">
+nayin_yinshen(c.hGz())
+//zhuan_nayin(c,d)
+//output_zhuan()
+</script>
+
+
+
+<script>
+document.write("<p>")
+
+if(month != null){//on first load don't generate donggong
+	donggong = gen_donggong()
+	mark_donggong(donggong,"fei")
+	month = month -1
+}
+
+document.write("<p>")
+</script>
+
+
+<script>
+print_header(d1,c, "括囊测事：")
+//document.write("\t" + shi_zibai_ruzhong + "入中 \t" + guashen  + "为卦身")
+//var kong_gan = get_kong_gan(xunshou[0])
+//document.write(" <span style='background-color:\"#99CCFF\"'>" + kong_gan + "空</span>")
+//alert(ri_xunshou[1].substr(4,6))
+//alert(ri_xunshou[1])
+//alert(rizhu + "日 " + ri_xunshou[0] + "旬 " + " <span style='background-color:\"#99CCFF\"'>" + kong_rigan + "空 " + ri_xunshou[1].substr(4,6)  + "空</span>")
+document.write(ri_xunshou[1] + " <span style='background-color:\"#99CCFF\"'>" + kong_rigan + "空 </span>")
+//document.write("\t" + get_andong(di_info[5],zhishi,cycle(c.hGz(),12)) + "宫暗动")
+</script>
+
+<script>
+if(typeof ju_num[2] != "undefined" && typeof ju_num[0] != "undefined") {
+	document.write(ju_num[2] + " " + ju_num[0])
+}
+var wangshuai = new Array(10)
+wangshuai = get_gongwei_wangshuai(ju_num[2])
+
+fushi_loc = buju_zhuan(shigan,ju_num,c.hGz())
+//fushi_loc = buju_zhigui(shigan,ju_num,c.hGz())
+fushi_loc = buju_kuonang(shigan,ju_num,c.hGz())
+
+document.write(fushi_loc+"&nbsp;&nbsp;&nbsp;&nbsp;")
+
+mingzhishi = bu_mingzhishi(di_info[0],c.hGz(),mingzhishi)//mingzhishi is an array to be filled up
+//anzhishi = bu_anzhishi(di_info[0],c.hGz(),anzhishi) // anzhishi is an array to be filled up
+</script>
+
+<script>
+
+bu_riliuqin(rigan,liuqin,tian)
+bu_liuqin(c.hGz_Str().substring(0,1),an_liuqin,tian)
+
+var tian_angan = new Array(10)
+var di_angan = new Array(10)
+var ren_angan = new Array(10)
+var ren_anzhi = new Array(10)
+
+bu_huoganzhi(huo_ganzhi,huo_xunwei)
+bu_tiandi_zhishen(ju_num,xunshou,tian,di)
+bu_tiandi_angan(ju_num,xunshou,tian,di,tian_angan,di_angan)
+bu_renpan_anganzhi(ju_num,xunshou,fushi_loc)
+
+mark_bg("值",di_shen,"#CCCCCC")
+mark_bg("值符",tian_shen,"#CCCCCC")
+mark_bg(men[zhishi],men,"#CCCCCC")
+
+var kong_dizhi_1 = ri_xunshou[1].substring(4,5)
+var kong_dizhi_2 = ri_xunshou[1].substring(5,6)
+mark_bg(kong_rigan,tian,"#99CCFF")
+mark_bg(kong_rigan,di,"#99CCFF")
+mark_bg(kong_rigan,tian_angan,"#99CCFF")
+mark_bg(kong_rigan,di_angan,"#99CCFF")
+mark_bg(kong_rigan,ren_angan,"#99CCFF")
+mark_bg(kong_dizhi_1,di_zhi,"#99CCFF")
+mark_bg(kong_dizhi_1,tian_zhi,"#99CCFF")
+mark_bg(kong_dizhi_1,ren_anzhi,"#99CCFF")
+mark_bg(kong_dizhi_2,tian_zhi,"#99CCFF")
+mark_bg(kong_dizhi_2,di_zhi,"#99CCFF")
+mark_bg(kong_dizhi_2,ren_anzhi,"#99CCFF")
+
+var kong_peigan = get_kong_peigan(ri_xunshou,xunshou)
+
+mark_bg(kong_peigan.substr(0,1),tian,"#99CCFF")
+mark_bg(kong_peigan.substr(1,2),tian,"#99CCFF")
+mark_bg(kong_peigan.substr(0,1),di,"#99CCFF")
+mark_bg(kong_peigan.substr(1,2),di,"#99CCFF")
+
+//kong_peigan = get_kong_peigan(tian_zhi,tian_angan)
+mark_bg(kong_peigan.substr(0,1),tian_angan,"#99CCFF")
+mark_bg(kong_peigan.substr(1,2),tian_angan,"#99CCFF")
+mark_bg(kong_peigan.substr(0,1),di_angan,"#99CCFF")
+mark_bg(kong_peigan.substr(1,2),di_angan,"#99CCFF")
+mark_bg(kong_peigan.substr(0,1),ren_angan,"#99CCFF")
+mark_bg(kong_peigan.substr(1,2),ren_angan,"#99CCFF")
+
+mark_wangdong(xing,men,tian_shen,di_shen,tian,di,"red")
+
+//mark_bg(shigan,tian,"#CCCCCC")
+</script>
+
+<p>
+<p>
+<script type="text/javascript">
+output_fei_full()
+//fei_nayin_full(c,d)
+</script>
+
+
+
+<!--
+<script>
+document.write("<br>")
+print_header(c,"法窍法测事：")
+</script>
+
+<script>
+ju_num = choose_ju_num(c, chosen_ju_num)
+if(typeof ju_num[2] != "undefined" && typeof ju_num[0] != "undefined") {
+	document.write(ju_num[2] + " " + ju_num[0])
+}
+fushi_loc = buju_skip(shigan,ju_num,c.hGz())
+document.write(fushi_loc)
+var kong_gan = get_kong_gan(xunshou[0])
+document.write(" <span style='background-color:\"#99CCFF\"'>" + kong_gan + "空</span>")
+
+mark(niangan,tian,"blue")
+mark(niangan,di,"blue")
+mark(niangan,an,"blue")
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(shigan,tian,"#CCCCCC")
+mark_bg(shigan,di,"#CCCCCC")
+mark_bg(shigan,an,"#CCCCCC")
+mark_wangdong(xing,men,tian_shen,di_shen,tian,di,"red")
+</script>
+
+<script type="text/javascript">
+document.write("<br>")
+skip_nayin()
+</script>
+
+<script>
+document.write("<br>")
+print_header(c,"田氏新法测事：")
+</script>
+
+<script>
+
+ju_num = tianshi_dingju(tianshi_jq_yuan(c))
+if(typeof ju_num[2] != "undefined" && typeof ju_num[0] != "undefined") {
+	document.write(ju_num[2] + " " + ju_num[0])
+}
+
+fushi_loc = buju_zhuan(shigan,ju_num,c.hGz())
+document.write(fushi_loc)
+
+mark(niangan,tian,"blue")
+mark(niangan,di,"blue")
+mark(niangan,an,"blue")
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(shigan,tian,"#CCCCCC")
+mark_bg(shigan,di,"#CCCCCC")
+mark_bg(shigan,an,"#CCCCCC")
+mark_wangdong(xing,men,tian_shen,di_shen,tian,di,"red")
+</script>
+
+<script type="text/javascript">
+document.write("<br>")
+output_zhuan()
+</script>
+
+
+<br>
+
+<script>
+print_header(d1,c, "天书布局法测事：")
+</script>
+
+<script>
+ju_num = choose_ju_num(c,chosen_ju_num)
+if(typeof ju_num[2] != "undefined" && typeof ju_num[0] != "undefined") {
+	document.write(ju_num[2] + " " + ju_num[0])
+}
+fushi_loc = buju_tianshu(shigan,ju_num,c.hGz())
+document.write(fushi_loc)
+mark(niangan,tian,"blue")
+mark(niangan,di,"blue")
+mark(niangan,an,"blue")
+
+mark(rigan,tian, "red")
+mark(rigan,di, "red")
+mark(rigan,an, "red")
+
+mark_bg(shigan,tian,"#CCCCCC")
+mark_bg(shigan,di,"#CCCCCC")
+mark_bg(shigan,an,"#CCCCCC")
+mark_wangdong(xing,men,tian_shen,di_shen,tian,di,"red")
+</script>
+
+
+
+<script type="text/javascript">
+document.write("<br>")
+output_tianshu()
+</script>
+-->
+</td>
+<td width=60%>
+<button id = "re_generate" onclick="guaqi_method()"> 起易林卦</button>
+<div id=r0></div>
+<div id=r1></div>
+<div id=m0></div>
+<div id=m1></div>
+
+<div id=a4></div><!--某卦之某卦-->
+<div id=a5></div><!--林辞-->
+<div id=b4></div><!--"尚先生解象"-->
+<div id=a6></div><!--尚解内容-->
+<!--
+<button id = "re_generate" onclick="generate_yilin_line()"> 起易林卦</button>
+
+<p>易林占测<p>
+<p>时间：<label id = "shijian"></label>
+<p>
+<p>序号：<label id = "linci_num"></label><p><p>
+<p><label id = "mougua_zhi_mougua"></label><p><p>
+<p><label id = "linci_words"></label><p><p>
+<p>尚注：<label id = "shangzhu"></label><p><p>
+-->
+</td>
+</tr>
+</table>
+</font>
+<script>
+mark_digong_bg(kong_dizhi_1,kong_dizhi_2,kong_rigan,kong_peigan,"#99CCFF")
+</script>
+</body>
+</html>

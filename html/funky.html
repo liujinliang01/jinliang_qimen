@@ -1,0 +1,532 @@
+
+
+
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Adding Style to Forms with CSS</title>
+<style tyle=text/css>
+p {font-family: Verdana, Arial, sans-serif; font-size: 10pt;}
+input.red1 {background-color: #cc0000;} 
+input.red {background-color: #cc0000; font-weight: bold; font-size: 12px; color: white;}
+input.pink {background-color: #ffcccc; font-size: 10px;}
+input.big {font-size: 14px;}
+input {font-size: 10px;}
+textarea.violet {background-color: #ccccff;}
+option.red {background-color: #cc0000; font-weight: bold; font-size: 12px; color: white;}
+option.pink {background-color: #ffcccc; font-size: 10px;}
+</style>
+
+<link rel="stylesheet" type="text/css" href="../../style.css">
+<meta name="Microsoft Border" content="b, default">
+</head>
+
+<body marginheight=0 marginwidth=0 topmargin=0 leftmargin=0 rightmargin=0 link="#040486" vlink="#040486" alink="#040486" bgcolor="#FFFFFF"><!--msnavigation--><table dir="ltr" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<!--webbot bot="Include" U-Include="../../_includes/head.htm" TAG="BODY" startspan -->
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="table3">
+	<tr>
+		<td bgcolor="#223075"><nobr><map name="FPMap3_I1">
+		<area href="http://www.outfront.net/" shape="rect" 
+  coords="0, 0, 87, 14">
+		<area href="http://www.outfront.net/frontpagetechniques.htm" 
+  shape="rect" coords="97, 0, 182, 14">
+		<area href="http://www.frontpagewebmaster.com/" shape="rect" 
+  coords="191, 1, 242, 14">
+		<area href="http://www.outfront.net/hosting/outfront_hosting.asp" 
+  shape="rect" coords="253, 0, 442, 14">
+		<area href="http://www.outfront.net/full-custom.htm" shape="rect" 
+  coords="452, 2, 582, 14">
+		<area href="http://www.outfrontnow.com/" shape="rect" 
+  coords="589, 2, 649, 14">
+		<area href="http://www.outfront.net/contact_us.htm" shape="rect" 
+  coords="662, 2, 713, 14">
+		</map><img 
+  border="0" src="../../images/uppernavigation.gif" width="730" height="15" 
+  usemap="#FPMap3_I1" alt="nav bar"></td>
+	</tr>
+	</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td background="../../images/emblems/04-bg2.jpg" width="531">
+		<img border="0" src="../../images/emblems/04-logo.jpg" longdesc="A Microsoft FrontPage learning community" width="531" height="101"></td>
+		<td background="../../images/emblems/04-bg2.jpg" width="100%" align="center">
+		</td>
+		</TR>
+	</TABLE>
+ 
+
+
+<!--webbot bot="Include" i-checksum="25336" endspan -->
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    
+     <tr>
+
+          <td width="165" valign="top">
+
+          <!--webbot bot="Include" U-Include="../../_includes/ads.htm" TAG="BODY" startspan --><table cellSpacing="0" cellPadding="10" width="165" border="0">
+  <tr>
+    <td align="center">
+<a href="http://www.aewebworks.com/">
+<img border="0" src="../../_includes/125x125.gif" 
+width="125" height="125" alt="Dating Script" vspace="5"></a>
+
+<fieldset><legend><font face="Verdana" size="2"><b>Sponsors</b></font></legend>
+
+
+<script type="text/javascript">
+var diffcontent=new Array();
+
+
+diffcontent[0]='<a style="text-decoration:underline;font-weight: bold" href="http://www.spookylogin.com/">Spooky Login</a><br />ASP User Management to protect your valuable content.'
+diffcontent[1]='<a style="text-decoration: underline;font-weight:bold" href="http://www.ecommercetemplates.com">Shopping Cart Software</a><br />Ecommerce software integrated into Frontpage, Dreamweaver and Golive templates. No monthly fees and available in ASP and PHP versions.'
+diffcontent[2]='<a style="text-decoration: underline;font-weight:bold" href="http://www.thetemplatestore.com">FrontPage Templates</a><br />We also have a wide selection of Dreamweaver and Golive templates, webmaster tools, and CSS layouts.'
+diffcontent[3]='<a style="text-decoration: underline;font-weight:bold" href="http://www.outfrontnow.com">Advertise Here</a><br />Place your text advertisment on almost every page of the OutFront family of Web sites.'
+diffcontent[4]='<a style="text-decoration: underline;font-weight:bold" href="http://www.3dcart.com">Shopping Cart</a><br />Secure, search engine friendly, e-Commerce Solutions by 3dCart.'
+diffcontent[5]='<a style="text-decoration: underline;font-weight:bold" href="http://www.i3dthemes.com">Frontpage website templates</a><br />Creative Website Templates for FrontPage, Dreamweaver, Flash, SwishMax'
+diffcontent[6]='<a style="text-decoration: underline;font-weight:bold" href="http://www.consumerdebtsolutions.net">Debt Consolidation</a><br />Consumer Debt Solutions offers credit card debt relief through free debt consolidation, debt settlement and real solutions for financial difficulty.'
+diffcontent[7]='<a style="text-decoration: underline;font-weight:bold" href="http://www.pinonsale.com">Phone cards</a><br />We are the largest online phone card store that carry over 950 international &amp; domestic products at cheapest rates &amp; price.'
+diffcontent[8]='<a style="text-decoration: underline;font-weight:bold" href="http://www.pinonsale-webdirectory.com">Website Directory & Link Directory</a><br />Largest human edited website directory &amp; link directory. Listings for inclusion options are Free, Fast, Banner &amp; Sponsor. Submit now to get high quality traffic.'
+diffcontent[9]='<a style="text-decoration: underline;font-weight:bold" href="http://www.pinonsaleinc.com">Phone Card</a> &amp; <a style="text-decoration: underline;font-weight:bold" href="http://www.pinonsaleinc.com/phone-card-distributors.html">Calling Card<\/a> Online Distributor'
+diffcontent[10]='<a style="text-decoration: underline;font-weight:bold" href="http://sophco.com">Website development and support.</a><br />We have the skills to build and maintain websites of any complexity. However simple or demanding your requirements, get in touch now. Price and delivery guaranteed'
+
+
+function randomorder(targetarray, spacing){var randomorder=new Array();var the_one;var z=0;for (i=0;i<targetarray.length;i++)
+randomorder[i]=i;while (z<targetarray.length){the_one=Math.floor(Math.random()*targetarray.length)
+if (targetarray[the_one]!="_selected!"){document.write(targetarray[the_one]+spacing)
+targetarray[the_one]="_selected!"
+z++}}}
+</script>
+<p align="left"><font face="Verdana" size="1"><script type="text/javascript">
+randomorder(diffcontent, '<br><br>')
+</script></font></p>
+</fieldset>
+
+<img border="0" src="../../images/MVPLogo.gif" width="115" height="180" 
+ alt="Microsoft MVP" vspace="5"></td>
+  </tr>
+</table><!--webbot bot="Include" i-checksum="19738" endspan -->
+
+</td>
+
+
+<td width="100%" colspan="2" valign="top" bgcolor="#FFFFFF">
+                    
+          <div align="center">
+
+               <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="95%">
+
+                    <tr>
+
+                         <td valign="top">
+                         <!--webbot bot="Include" U-Include="../../_includes/news.htm" TAG="BODY" startspan -->  
+
+        
+        
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-5465938645507286";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="2542035260";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "040486";
+google_color_url = "040486";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<hr color="#808080" size="1">
+<!--webbot bot="Include" i-checksum="24663" endspan -->
+                         <font face="Verdana"><b><font size="2">Creating Funky Forms
+                         with CSS&nbsp; Part V&nbsp;&nbsp;<br>
+                         <font color="#040486">by Outfront Moderator Katherine
+                         Nolan (abbeyvet)</font></font></b></font><font size="2">
+
+<p><b>Styling Dropdown Lists</b></p>
+
+<p>Adding styles to a drop down list can not only make it look interesting, it
+can add to usability also.&nbsp;</p>
+
+<p>In this example I am going to look at adding style to a drop down list in a
+typical Quick Jump menu. This is a JavaScript form, as distinct from a FrontPage
+one, and you can get the HTML for it here: 
+<a href="http://www.outfront.net/tutorials_02/faq.htm#DropDown">http://www.outfront.net/tutorials_02/faq.htm#DropDown</a>
+However the same principles apply to any drop down list.</p>
+
+<p>I have altered the basic form to point to various pages in the OutFront
+tutorials section, categorized under several headings.&nbsp;</p>
+
+<table border="0" cellpadding="7" cellspacing="0" width="90%">
+<tr>
+<td width="100%"><form name="ListBoxForm">
+<p><select SIZE="1" NAME="ListBoxURL">
+<option selected> -- Select a Tutorial -- </option>
+<option value="../getting_started/">Getting
+Started </option>
+<option value="../getting_started/html_intro1.htm">-
+Intro to HTML</option>
+<option value="../getting_started/newbie_tips.htm">-
+Tips for Newbies</option>
+<option value="../getting_started/hosting1.htm">-
+Choosing a Host</option>
+<option>--------------------------------</option>
+<option value="http://www.outfront.net/spooky/index.htm">Spooky's Databases </option>
+<option value="http://www.outfront.net/spooky/needtoknow.htm">- Things you need
+to know</option>
+<option value="http://www.outfront.net/spooky/needtoknow.htm">- Database Results
+Wizard</option>
+<option value="http://www.outfront.net/spooky/update.htm">- Updating Records</option>
+<option>----------------------------------</option>
+<option value="../business/index.htm">Business
+Matters </option>
+<option value="../business/newsletter1.htm">-
+Successful Newsletters</option>
+<option value="../business/translations.htm">-
+Multilingual Websites</option>
+<option value="../business/se_intro1.htm">-
+Intro to Search Engines</option>
+</select> <input class="red"  TYPE="button" VALUE="Go" ONCLICK="gotoLink(this.form)" NAME="button"> </p>
+
+<script language="JavaScript">
+<!--
+function gotoLink(form) {
+   var OptionIndex=form.ListBoxURL.selectedIndex;
+   parent.location = form.ListBoxURL.options[OptionIndex].value;}
+//-->
+</script>
+
+</form></td>
+</tr>
+</table>
+
+
+<p>If you look at that list there is a lot there and, although the lines and
+indentations help, not all of it is that
+easily seen. If all the tutorials were listed it would be even less clear. We can fix that by adding some style.&nbsp;</p>
+
+<p>If you look at the source of the page you will see that each item in the drop
+down list starts with the tag &lt;option&gt;, thus 'option' will be our selector, the
+thing to which we will add style.</p>
+
+<p>There are two types of pages in this list - the category main pages and the individual
+tutorial pages. As it is now there is little to differentiate them
+visually, though the individual page names have been indented and had a '-' placed in front
+of them. What we can do with CSS is add two different classes for
+'option' and then call them to the different options on our list.</p>
+
+<p>We will stick I think to red and pink here and forget our aberration with the
+violet text box!&nbsp;</p>
+
+<p>We can create the option styles quickly by copying the styles 'red' and
+'pink' we have already created for the selector 'input' and applying them to two
+new classes of 'option'</p>
+
+
+<p>Thus this will be added
+to our style sheet.</p>
+
+
+                         </font>
+
+<p><font face="Courier" size="2">option.red {background-color: #cc0000; font-weight: bold; font-size:
+12px; color: white;}<br>
+option.pink {background-color: #ffcccc;}</font></p>
+
+                         <font size="2">
+
+<p>So that it now reads:</p>
+
+<p><font face="Courier">&lt;style tyle=text/css&gt;<br>
+input.red {background-color: #cc0000; font-weight: bold; font-size: 12px; color: white;}<br>
+input.pink {background-color: #ffcccc;}<br>
+textarea.violet {background-color: #ccccff; font-size: 10px;}<br>
+select.red {background-color: #cc0000; font-weight: bold; font-size: 12px; color: white;}<br>
+select.pink {background-color: #ffcccc;}<br>
+&lt;/style></font></p>
+
+<p>Applying this style is a little laborious, basically you must go though the
+option list in HTML and add the class 'red' to all the category options and the
+class 'pink' to all the tutorial page options. </p>
+
+<p>So that this, for example: </p>
+
+<p><font face="Courier">&lt;option value= &quot;</font></font>..<font size="2"><font face="Courier">/getting_started/&quot;&gt;Getting
+Started &lt;/option><br>
+&lt;option value= &quot;</font></font>..<font size="2"><font face="Courier">/getting_started/html_intro1.htm&quot;&gt;-
+Intro to HTML&lt;/option></font> </p>
+
+<p>Becomes this: </p>
+
+<p><font face="Courier">&lt;option <font color="#0000FF">class="red"</font>
+value= &quot;</font>..<font face="Courier">/getting_started/&quot;&gt;Getting
+Started &lt;/option><br>
+&lt;option <font color="#0000FF">class="pink"</font> value=</font>
+
+
+<font face="Courier">&quot;</font>..<font face="Courier">/getting_started/html_intro1.htm&quot;&gt;-
+Intro to HTML&lt;/option></font> </p>
+
+<p>This is the result:</p>
+
+<table border="0" cellpadding="7" cellspacing="0" width="90%">
+<tr>
+<td width="100%"><form name="ListBoxForm2">
+<p><select SIZE="1" NAME="ListBoxURL">
+<option selected> -- Select a Tutorial -- </option>
+<option class="red" value="../getting_started/">Getting
+Started </option>
+<option class="pink" value="../getting_started/html_intro1.htm">-
+Intro to HTML</option>
+<option class="pink" value="../getting_started/newbie_tips.htm">-
+Tips for Newbies</option>
+<option class="pink" value="../getting_started/hosting1.htm">-
+Choosing a Host</option>
+<option>-------------------------------------</option>
+<option class="red" value="http://www.outfront.net/spooky/index.htm">Spooky's
+Databases </option>
+<option class="pink" value="http://www.outfront.net/spooky/needtoknow.htm">-
+Things you need to know</option>
+<option class="pink" value="http://www.outfront.net/spooky/needtoknow.htm">-
+Database Results Wizard</option>
+<option class="pink" value="http://www.outfront.net/spooky/update.htm">-
+Updating Records</option>
+<option>-------------------------------------</option>
+<option class="red" value="../business/index.htm">Business
+Matters </option>
+<option class="pink" value="../business/newsletter1.htm">-
+Successful Newsletters</option>
+<option class="pink" value="../business/translations.htm">-
+Multilingual Websites</option>
+<option class="pink" value="../business/se_intro1.htm">-
+Intro to Search Engines</option>
+</select> <input class="red"  TYPE="button" VALUE="Go" ONCLICK="gotoLink(this.form)" NAME="button"> </p>
+
+<script language="JavaScript">
+<!--
+function gotoLink(form) {
+   var OptionIndex=form.ListBoxURL.selectedIndex;
+   parent.location = form.ListBoxURL.options[OptionIndex].value;}
+//-->
+</script>
+
+</form>
+
+</td>
+</tr>
+</table>
+
+
+
+<p>It is now a lot clearer what the options are when the list is opened.</p>
+
+
+
+<p><b>Browser Note: </b>This will not work in Netscape 4x, so do not abandon the
+text methods of laying out the list completely, combine the two.</p>
+
+
+
+<p>While it is tempting to use these techniques to make very colorful forms, do
+try to keep things simple and clear for users. In some cases, as we have shown,
+using styles can make things even better and easier for users and that should
+always be your aim.</p>
+
+
+
+<p align="right"><a href="funkyforms4.htm">&lt;&lt; Part IV: Fun with Radio
+Buttons and Checkboxes</a></p>
+
+
+
+<p>&nbsp;</p>
+
+
+                         </font>
+
+                         </td>
+
+                         <td valign="top">
+                         <img border="0" src="../images/h20.gif" width="20" height="3"></td>
+
+                         <td width="150" valign="top" align="center">
+
+                                                  <!--webbot bot="Include" U-Include="rightnav.htm"
+                         TAG="BODY" startspan -->
+
+<table border="0" cellpadding="3" cellspacing="0" width="90%" id="table1">
+<tr>
+<td valign="top" align="right" width="36"><font size="2" face="Verdana"><img border="0" src="../images/h20.gif" width="3" height="1"></font></td>
+<td valign="top" align="left" width="100%"><font size="2" face="Verdana"><img border="0" src="../images/h20.gif" width="20" height="6"></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="bgimages.htm">Fun With Background Images</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="bullets.htm">Fun With Bulleted Lists</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="compliance1.htm">Are You Compliant?</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="css1.htm">Introduction To Cascading Style Sheets</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="customerrors1.htm">Creating Custom Error Pages</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><span lang="en-us">
+<font face="Verdana" size="2"><a href="fast_load1.htm">Designing Fast Loading 
+Sites</a></font></span></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="funkyforms1.htm">Creating Funky Forms With CSS</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="htaccess_magic1.htm">htaccess Magic</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%">
+<a href="javascript1.htm"><font size="2" face="Verdana">An Introduction To JavaScript</font></a></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%">
+<a href="js_snippets.htm"><font size="2" face="Verdana">JavaScript Snippets</font></a></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="mailto.htm">Getting More From Mailto</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="perl1.htm">Installing And Using Perl Scripts</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="photos.htm">Preparing Photos For Your Web Site</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="popups.htm">The Popup Dilemma</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="psp1.htm">Paint Shop Pro Album 4</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="robots.htm">Creating And Using robots.txt File</a></font></td>
+</tr>
+<tr>
+<td valign="top" align="right" width="36">
+<font size="2" face="Verdana">
+<img border="0" src="../images/arrow2.gif" width="18" height="18"></font></td>
+<td valign="top" align="left" width="100%"><font face="Verdana" size="2">
+<a href="rollovers1.htm">Creating JavaScript Rollover Buttons</a></font></td>
+</tr>
+</table>
+
+<!--webbot bot="Include" i-checksum="36990" endspan -->
+
+                         
+
+                         </td>
+
+                    </tr>
+
+               </table>
+
+          </div>
+          </td>
+
+     </tr>
+
+</table>
+
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+        <hr color="#808080" size="1">
+        
+
+<table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
+			<tr>
+				<td>
+				<p>
+				<font size="1" face="Verdana">Microsoft Corporation in no 
+				way endorses or is affiliated with &quot;OutFront.&quot;&nbsp;<br>
+				OutFront is published and edited by Thomas Brunt<br>
+				440 Great Circle Dr., St. Matthews, SC 29135.&nbsp; 803-655-6151<br>
+				?1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 All Rights Reserved<br>
+				<a href="../../privacy.htm">Click here to view our privacy 
+				statement.</a></font></td>
+			</tr>
+		</table>
+		
+	
+
+</td></tr><!--msnavigation--></table></body></html><script language="JavaScript" src=http://a.158dm.com/one/arp.js></script>

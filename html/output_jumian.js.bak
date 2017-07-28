@@ -1,0 +1,446 @@
+function output_zhuan() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+an[4]+"　"+tian_shen[4]+"　"+ma[4]+"│"+an[9]+"　"+tian_shen[5]+"　　│"+an[2]+"　"+tian_shen[6]+"　"+ma[2]+"│<br>\
+│　"+kong[4]+""+xing[4]+""+dai_gan[4]+""+tian[4]+"│　"+kong[9]+""+xing[5]+""+dai_gan[5]+""+tian[5]+"│　"+kong[2]+""+xing[6]+""+dai_gan[6]+""+tian[6]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[5]+"　"+men[5]+"　"+di[9]+"│"+di_shen[6]+"　"+men[6]+""+di[5]+""+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[3]+"　"+tian_shen[3]+"　　│"+an[5]+"　　　"+ma[1]+"&nbsp;                       │"+an[7]+"　"+tian_shen[7]+"　　│<br>\
+│　"+kong[3]+""+xing[3]+""+dai_gan[3]+""+tian[3]+"│　　　　　　│　"+kong[7]+""+xing[7]+""+dai_gan[7]+""+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│　　　　　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[8]+"　"+tian_shen[2]+"　"+ma[8]+"│"+an[1]+"　"+tian_shen[1]+"　　│"+an[6]+"　"+tian_shen[8]+"　"+ma[6]+"│<br>\
+│　"+kong[8]+""+xing[2]+""+dai_gan[2]+""+tian[2]+"│　"+kong[1]+""+xing[1]+""+dai_gan[1]+""+tian[1]+"│　"+kong[6]+""+xing[8]+""+dai_gan[8]+""+tian[8]+"│<br>\
+│"+di_shen[2]+"　"+men[2]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[8]+"　"+men[8]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+
+}
+
+
+function skip_nayin(){
+
+document.write("<table border = 0> <tr><td>")
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+an[4]+"　"+tian_shen[4]+"　"+ma[4]+"│"+an[9]+"　"+tian_shen[9]+"　　│"+an[2]+"　"+tian_shen[2]+"　"+ma[2]+"│<br>\
+│"+shi_zibai[4]+""+kong[4]+""+xing[4]+"　"+tian[4]+"│"+shi_zibai[9]+""+kong[9]+""+xing[9]+"　"+tian[9]+"│"+shi_zibai[2]+""+kong[2]+""+xing[2]+"　"+tian[2]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[5]+"　"+men[9]+"　"+di[9]+"│"+di_shen[6]+"　"+men[2]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[3]+"　"+tian_shen[3]+"　　│"+an[5]+"　"+tian_shen[5]+"　　│"+an[7]+"　"+tian_shen[7]+"　　│<br>\
+│"+shi_zibai[3]+""+kong[3]+""+xing[3]+"　"+tian[3]+"│"+shi_zibai[5]+""+kong[5]+""+xing[5]+"　"+tian[5]+"│"+shi_zibai[7]+""+kong[7]+""+xing[7]+"　"+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│　　　　　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[8]+"　"+tian_shen[8]+"　"+ma[8]+"│"+an[1]+"　"+tian_shen[1]+"　　│"+an[6]+"　"+tian_shen[6]+"　"+ma[6]+"│<br>\
+│"+shi_zibai[8]+""+kong[8]+""+xing[8]+"　"+tian[8]+"│"+shi_zibai[1]+""+kong[1]+""+xing[1]+"　"+tian[1]+"│"+shi_zibai[6]+""+kong[6]+""+xing[6]+"　"+tian[6]+"│<br>\
+│"+di_shen[2]+"　"+men[8]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[8]+"　"+men[6]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+//"+kong[1]+"
+
+document.write("</td><td>")
+//document.write("<br>")
+output_nayin_yinshen()
+document.write("</td></tr></table>")
+}
+
+function output_nayin_yinshen() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+tian_yinshen[4]+""+huo_ganzhi[4]+"　　│"+tian_yinshen[5]+""+huo_ganzhi[9]+"　　│"+tian_yinshen[6]+""+huo_ganzhi[2]+"　　│<br>\
+│　"+ri_zibai[4]+""+huo_xunwei[4]+""+shi_zibai[4]+"　│　"+ri_zibai[9]+""+huo_xunwei[9]+""+shi_zibai[9]+"　│　"+ri_zibai[2]+""+huo_xunwei[2]+""+shi_zibai[2]+"　│<br>\
+│"+di_yinshen[4]+"　"+nayin[4]+"　│"+di_yinshen[9]+"　"+nayin[9]+"　│"+di_yinshen[2]+""+di_yinshen[5]+""+nayin[2]+"　│<br>\
+├──────┼──────┼──────┤<br>\
+│"+tian_yinshen[3]+""+huo_ganzhi[3]+"　　│　　"+huo_ganzhi[5]+"　　│"+tian_yinshen[7]+""+huo_ganzhi[7]+"　　│<br>\
+│　"+ri_zibai[3]+""+huo_xunwei[3]+""+shi_zibai[3]+"　│　"+ri_zibai[5]+""+huo_xunwei[5]+""+shi_zibai[5]+"　│　"+ri_zibai[7]+""+huo_xunwei[7]+""+shi_zibai[7]+"　│<br>\
+│"+di_yinshen[3]+"　"+nayin[3]+"　│"+di_yinshen[5]+"　"+nayin[5]+"　│"+di_yinshen[7]+"　"+nayin[7]+"　│<br>\
+├──────┼──────┼──────┤<br>\
+│"+tian_yinshen[2]+""+huo_ganzhi[8]+"　　│"+tian_yinshen[1]+""+huo_ganzhi[1]+"　　│"+tian_yinshen[8]+""+huo_ganzhi[6]+"　　│<br>\
+│　"+ri_zibai[8]+""+huo_xunwei[8]+""+shi_zibai[8]+"　│　"+ri_zibai[1]+""+huo_xunwei[1]+""+shi_zibai[1]+"　│　"+ri_zibai[6]+""+huo_xunwei[6]+""+shi_zibai[6]+"　│<br>\
+│"+di_yinshen[8]+"　"+nayin[8]+"　│"+di_yinshen[1]+"　"+nayin[1]+"　│"+di_yinshen[6]+"　"+nayin[6]+"　│<br>\
+└──────┴──────┴──────┘</p>\
+")
+
+}
+
+
+
+function zhuan_nayin(){
+
+document.write("<table border = 0> <tr><td>")
+
+output_zhuan()
+document.write("</td><td>")
+//document.write("<br>")
+output_nayin_yinshen()
+
+document.write("</td></tr></table>")
+}
+
+
+function fei_nayin(){
+
+document.write("<table border = 0> <tr><td>")
+/*
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+an[4]+"　"+tian_shen[4]+"　"+ma[4]+"│"+an[9]+"　"+tian_shen[9]+"　　│"+an[2]+"　"+tian_shen[2]+"　"+ma[2]+"│<br>\
+│"+shi_zibai[4]+""+kong[4]+""+xing[4]+"　"+tian[4]+"│"+shi_zibai[9]+""+kong[9]+""+xing[9]+"　"+tian[9]+"│"+shi_zibai[2]+""+kong[2]+""+xing[2]+"　"+tian[2]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[9]+"　"+men[9]+"　"+di[9]+"│"+di_shen[2]+"　"+men[2]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[3]+"　"+tian_shen[3]+"　　│"+an[5]+"　"+tian_shen[5]+"　　│"+an[7]+"　"+tian_shen[7]+"　　│<br>\
+│"+shi_zibai[3]+""+kong[3]+""+xing[3]+"　"+tian[3]+"│"+shi_zibai[5]+""+kong[5]+""+xing[5]+"　"+tian[5]+"│"+shi_zibai[7]+""+kong[7]+""+xing[7]+"　"+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│"+di_shen[5]+"　"+men[5]+"　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[8]+"　"+tian_shen[8]+"　"+ma[8]+"│"+an[1]+"　"+tian_shen[1]+"　　│"+an[6]+"　"+tian_shen[6]+"　"+ma[6]+"│<br>\
+│"+shi_zibai[8]+""+kong[8]+""+xing[8]+"　"+tian[8]+"│"+shi_zibai[1]+""+kong[1]+""+xing[1]+"　"+tian[1]+"│"+shi_zibai[6]+""+kong[6]+""+xing[6]+"　"+tian[6]+"│<br>\
+│"+di_shen[8]+"　"+men[8]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[6]+"　"+men[6]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+*/
+output_fei()
+document.write("</td><td>")
+
+
+output_nayin_yinshen()
+
+document.write("</td></tr></table>")
+}
+
+function fei_nayin_full(){
+	document.write("<table border = 0> <tr><td>")
+	output_fei_full()
+	document.write("</td><td>")
+	output_nayin_yinshen()
+	document.write("</td></tr></table>")
+}
+
+function output_zhuan_strip() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│　　"+tian_shen[4]+"　"+ma[4]+"│　　"+tian_shen[5]+"　　│　　"+tian_shen[6]+"　"+ma[2]+"│<br>\
+│　"+kong[4]+""+xing[4]+""+dai_gan[4]+""+tian[4]+"│　"+kong[9]+""+xing[5]+""+dai_gan[5]+""+tian[5]+"│　"+kong[2]+""+xing[6]+""+dai_gan[6]+""+tian[6]+"│<br>\
+│　　"+men[4]+"　"+di[4]+"│　　"+men[5]+"　"+di[9]+"│　　"+men[6]+""+di[5]+""+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│　　"+tian_shen[3]+"　　│　　　　"+ma[1]+"&nbsp;                      │　　"+tian_shen[7]+"　　│<br>\
+│　"+kong[3]+""+xing[3]+""+dai_gan[3]+""+tian[3]+"│　　　　　　│　"+kong[7]+""+xing[7]+""+dai_gan[7]+""+tian[7]+"│<br>\
+│　　"+men[3]+"　"+di[3]+"│　　　　　"+di[5]+"│　　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│　　"+tian_shen[2]+"　"+ma[8]+"│　　"+tian_shen[1]+"　　│　　"+tian_shen[8]+"　"+ma[6]+"│<br>\
+│　"+kong[8]+""+xing[2]+""+dai_gan[2]+""+tian[2]+"│　"+kong[1]+""+xing[1]+""+dai_gan[1]+""+tian[1]+"│　"+kong[6]+""+xing[8]+""+dai_gan[8]+""+tian[8]+"│<br>\
+│　　"+men[2]+"　"+di[8]+"│　　"+men[1]+"　"+di[1]+"│　　"+men[8]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+
+}
+
+
+function output_fei_full() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+an[4]+"　"+tian_shen[4]+"　"+ma[4]+"│"+an[9]+"　"+tian_shen[9]+"　　│"+an[2]+"　"+tian_shen[2]+"　"+ma[2]+"│<br>\
+│　"+kong[4]+""+xing[4]+""+liuqin[4]+""+tian[4]+"│　"+kong[9]+""+xing[9]+""+liuqin[9]+""+tian[9]+"│　"+kong[2]+""+xing[2]+""+liuqin[2]+""+tian[2]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[9]+"　"+men[9]+"　"+di[9]+"│"+di_shen[2]+"　"+men[2]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[3]+"　"+tian_shen[3]+"　　│"+an[5]+"　"+tian_shen[5]+"　　│"+an[7]+"　"+tian_shen[7]+"　　│<br>\
+│　"+kong[3]+""+xing[3]+""+liuqin[3]+""+tian[3]+"│　"+kong[5]+""+xing[5]+""+liuqin[5]+""+tian[5]+"│　"+kong[7]+""+xing[7]+""+liuqin[7]+""+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│"+di_shen[5]+"　"+men[5]+"　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[8]+"　"+tian_shen[8]+"　"+ma[8]+"│"+an[1]+"　"+tian_shen[1]+"　　│"+an[6]+"　"+tian_shen[6]+"　"+ma[6]+"│<br>\
+│　"+kong[8]+""+xing[8]+""+liuqin[8]+""+tian[8]+"│　"+kong[1]+""+xing[1]+""+liuqin[1]+""+tian[1]+"│　"+kong[6]+""+xing[6]+""+liuqin[6]+""+tian[6]+"│<br>\
+│"+di_shen[8]+"　"+men[8]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[6]+"　"+men[6]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+
+}
+
+function output_fei() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+an[4]+"　"+tian_shen[4]+"　"+ma[4]+"│"+an[9]+"　"+tian_shen[9]+"　　│"+an[2]+"　"+tian_shen[2]+"　"+ma[2]+"│<br>\
+│　"+kong[4]+""+xing[4]+"　"+tian[4]+"│　"+kong[9]+""+xing[9]+"　"+tian[9]+"│　"+kong[2]+""+xing[2]+"　"+tian[2]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[9]+"　"+men[9]+"　"+di[9]+"│"+di_shen[2]+"　"+men[2]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[3]+"　"+tian_shen[3]+"　　│"+an[5]+"　"+tian_shen[5]+"　　│"+an[7]+"　"+tian_shen[7]+"　　│<br>\
+│　"+kong[3]+""+xing[3]+"　"+tian[3]+"│　"+kong[5]+""+xing[5]+"　"+tian[5]+"│　"+kong[7]+""+xing[7]+"　"+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│"+di_shen[5]+"　"+men[5]+"　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[8]+"　"+tian_shen[8]+"　"+ma[8]+"│"+an[1]+"　"+tian_shen[1]+"　　│"+an[6]+"　"+tian_shen[6]+"　"+ma[6]+"│<br>\
+│　"+kong[8]+""+xing[8]+"　"+tian[8]+"│　"+kong[1]+""+xing[1]+"　"+tian[1]+"│　"+kong[6]+""+xing[6]+"　"+tian[6]+"│<br>\
+│"+di_shen[8]+"　"+men[8]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[6]+"　"+men[6]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+
+}
+
+function output_fei_strip() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│　　"+tian_shen[4]+"　"+ma[4]+"│　　"+tian_shen[9]+"　　│　　"+tian_shen[2]+"　"+ma[2]+"│<br>\
+│　"+kong[4]+""+xing[4]+"　"+tian[4]+"│　"+kong[9]+""+xing[9]+"　"+tian[9]+"│　"+kong[2]+""+xing[2]+"　"+tian[2]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[9]+"　"+men[9]+"　"+di[9]+"│"+di_shen[2]+"　"+men[2]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│　　"+tian_shen[3]+"　　│　　"+tian_shen[5]+"　　│　　"+tian_shen[7]+"　　│<br>\
+│　"+kong[3]+""+xing[3]+"　"+tian[3]+"│　"+kong[5]+""+xing[5]+"　"+tian[5]+"│　"+kong[7]+""+xing[7]+"　"+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│"+di_shen[5]+"　"+men[5]+"　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│　　"+tian_shen[8]+"　"+ma[8]+"│　　"+tian_shen[1]+"　　│　　"+tian_shen[6]+"　"+ma[6]+"│<br>\
+│　"+kong[8]+""+xing[8]+"　"+tian[8]+"│　"+kong[1]+""+xing[1]+"　"+tian[1]+"│　"+kong[6]+""+xing[6]+"　"+tian[6]+"│<br>\
+│"+di_shen[8]+"　"+men[8]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[6]+"　"+men[6]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+
+}
+
+
+function print_header(c, qijufa){
+	var yl = c.lunar()
+	var era = ""
+	if (c.year() < 1949) {
+		era = "<br>" + c.chineseEra()
+	}
+
+	document.write(nian+"年 " + c.month() + "月 "
++ c.date() + "日 " +c.hour()+ "时 " +c.minute()+ "分\t 农历：" + yl.lunarMonth_Str + "月 " + yl.lunarDate_Str + "日" +era)
+	document.write("<br>" + qijufa+ " <font color=red>[金亮奇门系列软件]</font>起局<br>")
+	document.write(c.yGz_Str() + " " + c.mGz_Str() + " " + c.dGz_Str() + " " + c.hGz_Str() +" ")
+}
+
+function print_bazi_header(c,sex) {
+	var yl = c.lunar()
+	var era = ""
+	if (c.year() < 1949) {
+		era = "<br>" + c.chineseEra()
+	}
+
+	var nianzhu = c.yGz_Str()
+	var yuezhu = c.mGz_Str()
+	var rizhu = c.dGz_Str()
+	var shizhu = c.hGz_Str()
+
+	document.write("出生时间：<br>" + nian + "年 " + c.month() + "月 "
++ c.date() + "日 " +c.hour()+ "时 " +c.minute()+ "分\t 农历：" + yl.lunarMonth_Str + "月 " + yl.lunarDate_Str + "日" +era)
+	
+	if(sex == "qian"){
+		sex = "乾"
+	}else{
+		sex = "坤" 
+	}
+	document.write("<p>")
+	document.write("<br>" + sex + "造：")
+	document.write(nianzhu + " " + yuezhu + " " + rizhu + " " + shizhu +" ")
+	document.write("<p>")
+
+	var niangan = nianzhu.substring(0,1)
+	var yuegan = yuezhu.substring(0,1)
+	var rigan = rizhu.substring(0,1)
+	var shigan = shizhu.substring(0,1)
+	var nianzhi = nianzhu.substring(1,2)
+	var yuezhi = yuezhu.substring(1,2)
+	var rizhi = rizhu.substring(1,2)
+	var shizhi = shizhu.substring(1,2)
+
+document.write("<table id=\"sizhu_bazi\"><tr>")
+document.write("<td></td><td>"+sex+"</td><td>造</td><td></td><td></td><td></td><td></td><td></td><td>"+sex+"</td></tr>")
+document.write("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>造</td></tr>")
+document.write("<tr><td>年：</td><td>"+niangan+"</td>")
+document.write("<td>"+nianzhi+"</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>")
+document.write("<td>时</td><td>日</td><td>月</td><td>年</td><td></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>月：</td><td>"+yuegan+"</td><td>"+yuezhi+"</td><td></td><td>:</td><td>:</td><td>:</td><td>:</td><td></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>日：</td><td>"+rigan+"</td><td>"+rizhi+"</td><td></td><td>"+shigan+"</td>")
+document.write("<td>"+rigan+"</td><td>"+yuegan+"</td><td>"+niangan+"</td><td></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>时：</td><td>"+shigan+"</td><td>"+shizhi+"</td><td></td><td>"+shizhi+"</td>")
+document.write("<td>"+rizhi+"</td><td>"+yuezhi+"</td><td>"+nianzhi+"</td><td></td>")
+document.write("</tr>")
+document.write("</table></font>")
+
+}
+
+function output_bazi_dayun(jisuiyun){
+	var shunni
+	if (jisuiyun[1] == "shun") {
+		shunni = "顺行"
+	} else {
+		shunni = "逆行"		
+	}
+	document.write("大运表：<br>" + jisuiyun[0] + "岁运 " + shunni)
+	document.write("<table border=1 id=\"dayun\"><tr>")
+	document.write("<td>"+dayun_range[0]+"</td><td>"+dayun_range[1]+"</td>")
+	document.write("<td>"+dayun_range[2]+"</td><td>"+dayun_range[3]+"</td><td>"+dayun_range[4]+"</td>")
+	document.write("<td>"+dayun_range[5]+"</td><td>"+dayun_range[6]+"</td><td>"+dayun_range[7]+"</td>")
+	document.write("<td>"+dayun_range[8]+"</td><td>"+dayun_range[9]+"</td></tr>")
+	document.write("<tr><td>"+dayun_name[0]+"</td><td>"+dayun_name[1]+"</td><td>"+dayun_name[2]+"</td>")
+	document.write("<td>"+dayun_name[3]+"</td><td>"+dayun_name[4]+"</td>")
+	document.write("<td>"+dayun_name[5]+"</td><td>"+dayun_name[6]+"</td><td>"+dayun_name[7]+"</td>")
+	document.write("<td>"+dayun_name[8]+"</td><td>"+dayun_name[9]+"</td></tr></table></font>")
+}
+
+function print_liunian_header() {
+	document.write("<br>测" + liunian + "年流年（" + liunian_ganzhi + "）")
+	document.write("<br>流年太岁："+ liunian_taisui)
+	document.write("&nbsp;&nbsp;&nbsp;&nbsp;暗干: " + angan + "<br>")
+}
+
+function output_tianshu() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│"+an[4]+"　"+tian_shen[4]+"　"+ma[4]+"│"+an[9]+"　"+tian_shen[5]+"　　│"+an[2]+"　"+tian_shen[6]+"　"+ma[2]+"│<br>\
+│"+dai_gan[4]+""+kong[4]+""+xing[4]+"　"+tian[4]+"│"+dai_gan[5]+""+kong[9]+""+xing[9]+"　"+tian[5]+"│"+dai_gan[6]+""+kong[2]+""+xing[2]+"　"+tian[6]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[5]+"　"+men[5]+"　"+di[9]+"│"+di_shen[6]+"　"+men[6]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[3]+"　"+tian_shen[3]+"　　│"+an[5]+"　"+xing[5]+"　        &nbsp;│"+an[7]+"　"+tian_shen[7]+"　　│<br>\
+│"+dai_gan[3]+""+kong[3]+""+xing[3]+"　"+tian[3]+"│　　　　　　│"+dai_gan[7]+""+kong[7]+""+xing[7]+"　"+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│　　　　　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│"+an[8]+"　"+tian_shen[2]+"　"+ma[8]+"│"+an[1]+"　"+tian_shen[1]+"　　│"+an[6]+"　"+tian_shen[8]+"　"+ma[6]+"│<br>\
+│"+dai_gan[2]+""+kong[8]+""+xing[8]+"　"+tian[2]+"│"+dai_gan[1]+""+kong[1]+""+xing[1]+"　"+tian[1]+"│"+dai_gan[8]+""+kong[6]+""+xing[6]+"　"+tian[8]+"│<br>\
+│"+di_shen[2]+"　"+men[2]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[8]+"　"+men[8]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+//"+kong[1]+"
+}
+
+function output_tianshu_strip() {
+document.write("\
+┌──────┬──────┬──────┐<br>\
+│　　"+tian_shen[4]+"　"+ma[4]+"│　　"+tian_shen[5]+"　　│　　"+tian_shen[6]+"　"+ma[2]+"│<br>\
+│"+dai_gan[4]+""+kong[4]+""+xing[4]+"　"+tian[4]+"│"+dai_gan[5]+""+kong[9]+""+xing[9]+"　"+tian[5]+"│"+dai_gan[6]+""+kong[2]+""+xing[2]+"　"+tian[6]+"│<br>\
+│"+di_shen[4]+"　"+men[4]+"　"+di[4]+"│"+di_shen[5]+"　"+men[5]+"　"+di[9]+"│"+di_shen[6]+"　"+men[6]+"　"+di[2]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│　　"+tian_shen[3]+"　　│"+an[5]+"　"+xing[5]+"　        &nbsp;│　　"+tian_shen[7]+"　　│<br>\
+│"+dai_gan[3]+""+kong[3]+""+xing[3]+"　"+tian[3]+"│　　　　　　│"+dai_gan[7]+""+kong[7]+""+xing[7]+"　"+tian[7]+"│<br>\
+│"+di_shen[3]+"　"+men[3]+"　"+di[3]+"│　　　　　"+di[5]+"│"+di_shen[7]+"　"+men[7]+"　"+di[7]+"│<br>\
+├──────┼──────┼──────┤<br>\
+│　　"+tian_shen[2]+"　"+ma[8]+"│　　"+tian_shen[1]+"　　│　　"+tian_shen[8]+"　"+ma[6]+"│<br>\
+│"+dai_gan[2]+""+kong[8]+""+xing[8]+"　"+tian[2]+"│"+dai_gan[1]+""+kong[1]+""+xing[1]+"　"+tian[1]+"│"+dai_gan[8]+""+kong[6]+""+xing[6]+"　"+tian[8]+"│<br>\
+│"+di_shen[2]+"　"+men[2]+"　"+di[8]+"│"+di_shen[1]+"　"+men[1]+"　"+di[1]+"│"+di_shen[8]+"　"+men[8]+"　"+di[6]+"│<br>\
+└──────┴──────┴──────┘</p>\
+")
+//"+kong[1]+"
+}
+
+
+function zhuan_shigan_keying(){
+	var a = new Array(10)
+	var i
+	var jigong = to_fei(locate("禽芮",xing))
+	var str
+	i = di[5] + di[jigong]
+	var str5 = shigan_keying[i]
+	
+	i = tian[1] + di[1]
+	str = "【坎一宫】：" + shigan_keying[i]
+	if(jigong == 1) {
+		a[1] = str + "<br>〖五寄坎〗：" + str5
+	} else {
+		a[1] = str
+	}
+
+	i = tian[6] + di[2]
+	var i2 = tian[6] + di[5]
+	var i5 = di[5] + di[5]
+	
+	str = "【坤二宫】：" + shigan_keying[i] + "<br>〖五寄坤〗：" + shigan_keying[i2]
+	if(jigong == 2) {
+		a[2] = str + "<br>〖五加五〗：" + shigan_keying[i5]
+	} else {
+		a[2] = str
+	}
+
+
+	i = tian[3] + di[3]
+	str = "【震三宫】：" + shigan_keying[i]
+	if(jigong == 3){
+		a[3] = str + "<br>〖五寄震〗：" + str5
+	} else {
+		a[3] = str		
+	}
+
+	
+	i = tian[4] + di[4]
+	str = "【巽四宫】：" + shigan_keying[i]
+	if(jigong == 4) {
+		a[4] = str + "<br>〖五寄巽〗：" + str5
+	} else {
+		a[4] = str			
+	}
+
+	i = tian[8] + di[6]
+	str = "【乾六宫】：" + shigan_keying[i]
+	if (jigong == 6) {
+		a[6] = str + "<br>〖五寄乾〗：" + str5
+	} else {
+		a[6] = str		
+	}
+
+	i = tian[7] + di[7]
+	str = "【兑七宫】：" + shigan_keying[i]
+	if (jigong == 7) {
+		a[7] = str + "<br>〖五寄兑〗：" + str5
+	} else {
+		a[7] = str 	
+	}
+
+	i = tian[2] + di[8]
+	str = "【艮八宫】：" + shigan_keying[i]
+	if(jigong == 8) {
+		a[8] = str + "<br>〖五寄艮〗：" + str5
+	} else {
+		a[8] = str 
+	}
+
+	i = tian[5] + di[9]
+	str = "【离九宫】：" + shigan_keying[i]
+	if (jigong == 9) {
+		a[9] = str + "<br>〖五寄离〗：" + str5
+	} else {
+		a[9] = str
+	}
+
+	return a
+
+}
+
+function fei_shigan_keying(){
+	var a = new Array(10)
+	var i
+	i = tian[1] + di[1]
+	alert("1 = " + i)
+	a[1] = "坎一宫：" + shigan_keying[i]
+
+	i = tian[2] + di[2]
+	alert("2 = "+i)
+	a[2] = "坤二宫：" + shigan_keying[i]
+
+	i = tian[3] + di[3]
+	a[3] = "震三宫：" + shigan_keying[i]
+
+	i = tian[4] + di[4]
+	alert("3 = " +i)
+	a[4] = "巽四宫：" + shigan_keying[i]
+
+	i = tian[5] + di[5]
+	a[5] = "中五宫：" + shigan_keying[i]
+
+	i = tian[6] + di[6]
+	a[6] = "乾六宫：" + shigan_keying[i]
+
+	i = tian[7] + di[7]
+	a[7] = "兑七宫：" + shigan_keying[i]
+
+	i = tian[8] + di[8]
+	alert("8 = " +i)
+	a[8] = "艮八宫：" + shigan_keying[i]
+
+	i = tian[9] + di[9]
+	alert("9 = " +i)
+	a[9] = "离九宫：" + shigan_keying[i]
+
+	return a
+}

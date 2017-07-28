@@ -1,0 +1,23 @@
+﻿option {
+background: bisque;
+color: black;
+}
+
+table.cal{
+border-collapse: collapse;
+background-color: silver;
+filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='orange', EndColorStr='coral')
+}
+
+body{
+font-size:100%
+}
+
+.jieqi_header{
+font-color:blue;
+filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='lawngreen', EndColorStr='orange')
+}
+
+td.weekends{
+color:blue;
+}
